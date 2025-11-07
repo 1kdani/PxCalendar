@@ -8,6 +8,11 @@ messages:
   reload: "%plugin-prefix%&aᴄᴏɴꜰɪɢᴜʀᴀᴛɪᴏɴ ᴀɴᴅ ʟᴀɴɢᴜᴀɢᴇ ꜰɪʟᴇꜱ ʜᴀᴠᴇ ʙᴇᴇɴ ʀᴇʟᴏᴀᴅᴇᴅ."
   no-permission: "%plugin-prefix%&cʏᴏᴜ ᴅᴏ ɴᴏᴛ ʜᴀᴠᴇ ᴘᴇʀᴍɪssɪᴏɴ ᴛᴏ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ."
   player-only: "%plugin-prefix%&cᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴄᴀɴ ᴏɴʟʏ ʙᴇ ᴜsᴇᴅ ʙʏ ᴘʟᴀʏᴇʀs."
+  calendar-not-found: "%plugin-prefix%&cCᴀʟᴇɴᴅᴀʀ '&e%id%&c' ɴᴏᴛ ꜰᴏᴜɴᴅ."
+  must-look-at-block: "%plugin-prefix%&cYᴏᴜ ᴍᴜsᴛ ʙᴇ ʟᴏᴏᴋɪɴɢ ᴀᴛ ᴀ ʙʟᴏᴄᴋ."
+  physical-cal-created: "%plugin-prefix%&aSᴜᴄᴄᴇssꜰᴜʟʟʏ ᴄʀᴇᴀᴛᴇᴅ ᴀ ᴘʜʏsɪᴄᴀʟ ᴄᴀʟᴇɴᴅᴀʀ ꜰᴏʀ '&e%id%&a' ʜᴇʀᴇ."
+  physical-cal-removed: "%plugin-prefix%&aRᴇᴍᴏᴠᴇᴅ ᴛʜᴇ ᴘʜʏsɪᴄᴀʟ ᴄᴀʟᴇɴᴅᴀʀ ꜰʀᴏᴍ ᴛʜɪs ʙʟᴏᴄᴋ."
+  physical-cal-not-found: "%plugin-prefix%&cTʜᴇʀᴇ ɪs ɴᴏ ᴘʜʏsɪᴄᴀʟ ᴄᴀʟᴇɴᴅᴀʀ ᴀᴛ ᴛʜɪs ʙʟᴏᴄᴋ."
 
   # Update Checker Messages
   update-available:
@@ -24,17 +29,65 @@ calendar:
   locked: "&cᴛʜɪs ᴅᴀʏ ɪs sᴛɪʟʟ ʟᴏᴄᴋᴇᴅ! &7(Cᴏᴍᴇ ʙᴀᴄᴋ ᴏɴ Dᴇᴄᴇᴍʙᴇʀ %day%)"
   available: "&ᴀᴄʟɪᴄᴋ ᴛᴏ ᴄʟᴀɪᴍ ʏᴏᴜʀ ʀᴇᴡᴀʀᴅ ꜰᴏʀ ᴅᴀʏ %day%!"
   claimed: "&7ʏᴏᴜ ʜᴀᴠᴇ ᴀʟʀᴇᴀᴅʏ ᴄʟᴀɪᴍᴇᴅ ᴛʜɪs ʀᴇᴡᴀʀᴅ."
+  unclaimed-rewards: "%plugin-prefix%&eʏᴏᴜ ʜᴀᴠᴇ &a%count% &ᴇᴜɴᴄʟᴀɪᴍᴇᴅ ʀᴇᴡᴀʀᴅs! ᴛʏᴘᴇ &b/pxc open &ᴇᴛᴏ ᴄʟᴀɪᴍ ᴛʜᴇᴍ."
   late-claim-disabled: "&cʏᴏᴜ ᴍɪssᴇᴅ ᴛʜɪs ᴅᴀʏ! ʏᴏᴜ ᴄᴀɴ ɴᴏ ʟᴏɴɢᴇʀ ᴄʟᴀɪᴍ ɪᴛ."
   ip-limit-reached: "&cᴛʜᴇ ʀᴇᴡᴀʀᴅ ʟɪᴍɪᴛ ꜰᴏʀ ʏᴏᴜʀ ɪᴘ ᴀᴅᴅʀᴇss ʜᴀs ʙᴇᴇɴ ʀᴇᴀᴄʜᴇᴅ."
 
   requirement-fail-permission: "&ᴄʏᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴛʜᴇ ʀᴇǫᴜɪʀᴇᴅ ᴘᴇʀᴍɪssɪᴏn ᴛᴏ ᴄʟᴀɪᴍ ᴛʜɪs."
   requirement-fail-money: "&ᴄʏᴏᴜ ɴᴇᴇᴅ &a$%amount% &ᴄᴛᴏ ᴄʟᴀɪm ᴛʜɪs."
 
+holograms:
+  # Shown when the next day is still locked
+  locked:
+    - "&c&l%calendar_name%"
+    - "&7Nᴇxᴛ ʀᴇᴡᴀʀᴅ ɪɴ:"
+    - "&e%time_left%"
+
+  # Shown when the player has rewards waiting
+  available:
+    - "&a&l%calendar_name%"
+    - "&eYou have &6&l%available_count% &ereward(s) waiting!"
+    - "&aClick to open!"
+
+  # Shown when the player has claimed everything available
+  all-claimed:
+    - "&7&l%calendar_name%"
+    - "&8(Aʟʟ ʀᴇᴡᴀʀᴅs ᴄʟᴀɪᴍᴇᴅ)"
+    - "&7Cᴏᴍᴇ ʙᴀᴄᴋ ᴛᴏᴍᴏʀʀᴏw!"
+
+  # Shown when the player missed a day and late-claims are off
+  missed:
+    - "&4&l%calendar_name%"
+    - "&cYᴏᴜ ᴍɪssᴇᴅ ᴀ ʀᴇᴡᴀʀᴅ!"
+
 commands:
   reload: "%plugin-prefix%&ᴀᴀʟʟ ᴄᴏɴꜰɪɢᴜʀᴀᴛɪᴏɴs, ɢᴜɪs, ᴀɴᴅ ʀᴇᴡᴀʀᴅ ꜰɪʟᴇs ʜᴀᴠᴇ ʙᴇᴇɴ ʀᴇʟᴏᴀᴅᴇᴅ."
   reset-success: "%plugin-prefix%&ᴀsᴜᴄᴄᴇssꜰᴜʟʟʏ ʀᴇsᴇᴛ ᴛʜᴇ ᴄᴀʟᴇɴᴅᴀʀ ᴅᴀᴛᴀ ꜰᴏʀ &e%player%&ᴀ."
   player-not-found: "%plugin-prefix%&ᴄᴘʟᴀʏᴇʀ &e%player% &ᴄɴᴏᴛ ꜰᴏᴜɴᴅ."
   help-header: "&8&m---...---&r &b&lPxCalendar Help&r &8&m---...---"
+  # Define the help lines. The plugin will check the permission for each line.
+  help-lines:
+    '1':
+      permission: "pxcalendar.help"
+      text: "&b/pxc help &7- &fShows this help menu."
+    '2':
+      permission: "pxcalendar.open"
+      text: "&b/pxc open [id] &7- &fOpens a calendar."
+    '3':
+      permission: "pxcalendar.reload"
+      text: "&b/pxc reload &7- &fReloads the plugin configuration."
+    '4':
+      permission: "pxcalendar.reset"
+      text: "&b/pxc reset <player> &7- &fResets a player's data."
+    '5':
+      permission: "pxcalendar.editor"
+      text: "&b/pxc editor &7- &fOpens the GUI editor."
+    '6':
+      permission: "pxcalendar.admin.pcal"
+      text: "&b/pxc pcal create <id> &7- &fCreates a physical calendar."
+    '7':
+      permission: "pxcalendar.admin.pcal"
+      text: "&b/pxc pcal delete &7- &fDeletes the physical calendar you are looking at."
   help-footer: "&8&m---...---...---...---...---...---...---"
 
 gui:

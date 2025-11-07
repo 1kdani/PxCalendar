@@ -47,6 +47,14 @@ calendar:
   # How often (in ticks) to update the GUI items (e.g., countdowns)? 20 ticks = 1 sec
   gui-update-interval: 20
 
+# Reminder settings for players with unclaimed rewards
+reminders:
+  # Enable reminding players?
+  enable: true
+  # Interval in minutes to remind players of unclaimed rewards.
+  # Set to -1 to disable.
+  interval-minutes: 60
+
 # Sounds for different actions (set to "NONE" to disable)
 # Use Bukkit Sound enum names: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html
 sounds:

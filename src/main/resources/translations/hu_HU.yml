@@ -24,17 +24,65 @@ calendar:
   locked: "&ᴄᴇᴢ ᴀ ɴᴀᴘ ᴍéɢ ᴢáʀᴠᴀ ᴠᴀɴ! &7(Jöᴠvj ᴠɪssᴢᴀ Dᴇᴄᴇᴍʙᴇʀ %day%.)"
   available: "&ᴀᴋᴀᴛᴛɪɴᴛs ᴀ ᴊᴜᴛᴀʟᴍᴀᴅéʀᴛ (Nᴀᴘ: %day%)!"
   claimed: "&7ᴇᴢᴛ ᴀ ᴊᴜᴛᴀʟᴍᴀᴛ ᴍáʀ áᴛᴠᴇᴛᴛᴇᴅ."
+  unclaimed-rewards: "%plugin-prefix%&eMég &a%count% &eát nem vett jutalmad van! &b/pxc open"
   late-claim-disabled: "&ᴄsᴀᴊɴᴏs ʟᴇᴍᴀʀᴀᴅᴛáʟ ᴇʀʀőʟ ᴀ ɴᴀᴘʀóʟ! Töʙʙé ɴᴇᴍ ᴠᴇʜᴇᴛᴇᴅ áᴛ."
   ip-limit-reached: "&ᴄᴀᴢ ɪᴘ ᴄíᴍᴇᴅʀőʟ ᴍáʀ ᴇʟéʀᴛéᴛᴇᴋ ᴀ ᴍᴀxɪᴍáʟɪs ᴊᴜᴛᴀʟᴏᴍ sᴢáᴍᴏᴛ."
 
   requirement-fail-permission: "&ᴄɴɪɴᴄs ᴍᴇɢ ᴀ sᴢüᴋsᴇɢᴇs ʀᴀɴɢᴏᴅ ᴀ ᴊᴜᴛᴀʟᴏᴍ áᴛᴠéᴛᴇʟéʜᴇᴢ."
   requirement-fail-money: "&ᴄszüᴋsᴇɢᴇᴅ ᴠᴀɴ &a%amount% $ &ᴄᴘéɴᴢʀᴇ ᴀᴢ áᴛᴠéᴛᴇʟʜᴇᴢ."
 
+# %available_count% - Hány átvehető jutalom van
+holograms:
+  # Ha a következő nap még zárolva van
+  locked:
+    - "&c&l%calendar_name%"
+    - "&7Köᴠᴇᴛᴋᴇᴢő ᴊᴜᴛᴀʟᴏᴍ:"
+    - "&e%time_left%"
+
+  # Ha a játékosnak átvehető jutalma van
+  available:
+    - "&a&l%calendar_name%"
+    - "&eMár &6&l%available_count% &ejutalom vár rád!"
+    - "&aKattints a kinyitáshoz!"
+
+  # Ha a játékos mindent átvett
+  all-claimed:
+    - "&7&l%calendar_name%"
+    - "&8(Minden jutalmat átvettél)"
+    - "&7Nézz vissza holnap!"
+
+  # Ha a játékos lemaradt és a "late-claim" ki van kapcsolva
+  missed:
+    - "&4&l%calendar_name%"
+    - "&cLᴇᴍᴀʀᴀᴅᴛáʟ ᴇɢʏ ᴊᴜᴛᴀʟᴏᴍʀóʟ!"
+
 commands:
   reload: "%plugin-prefix%&ᴀᴀ ᴋᴏɴꜰɪɢᴜʀáᴄɪó, ɢᴜɪ éꜱ ᴊᴜᴛᴀʟᴏᴍ ꜰáᴊʟᴏᴋ úᴊʀᴀᴛöʟᴛᴠᴇ."
   reset-success: "%plugin-prefix%&ᴀsɪᴋᴇʀᴇsᴇɴ ᴠɪssᴢᴀáʟʟíᴛᴏᴛᴛᴀᴅ &e%player% &ᴀɴᴀᴘᴛáʀ ᴀᴅᴀᴛᴀɪᴛ."
   player-not-found: "%plugin-prefix%&ᴄᴀ &e%player% &ᴄɴᴇᴠű ᴊáᴛéᴋᴏs ɴᴇᴍ ᴛᴀʟáʟʜᴀᴛó."
   help-header: "&8&m---...---&r &b&lPxCalendar Súgó&r &8&m---...---"
+  help-lines:
+    '1':
+      permission: "pxcalendar.help"
+      text: "&b/pxc help &7- &fMegmutatja ezt a súgót."
+    '2':
+      permission: "pxcalendar.open"
+      text: "&b/pxc open [id] &7- &fMegnyit egy naptárat."
+    '3':
+      permission: "pxcalendar.reload"
+      text: "&b/pxc reload &7- &fÚjratölti a plugint."
+    '4':
+      permission: "pxcalendar.reset"
+      text: "&b/pxc reset <player> &7- &fTörli egy játékos adatait."
+    '5':
+      permission: "pxcalendar.editor"
+      text: "&b/pxc editor &7- &fMegnyitja a GUI szerkesztőt."
+    '6':
+      permission: "pxcalendar.admin.pcal"
+      text: "&b/pxc pcal create <id> &7- &fFizikai naptárat hoz létre."
+    '7':
+      permission: "pxcalendar.admin.pcal"
+      text: "&b/pxc pcal delete &7- &fTörli a fizikai naptárat, amit nézel."
   help-footer: "&8&m---...---...---...---...---...---...---"
 
 gui:
