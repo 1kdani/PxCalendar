@@ -1,0 +1,40 @@
+# Reward Bundle: example1
+# Contains all rewards for the 'example1' calendar.
+
+reward-bundles:
+  'day-1':
+    rewards:
+      commands:
+        - "eco give %player_name% 500"
+        - "msg %player_name% &#FFAA00&lBoldog Adventet! &fItt az első jutalmad."
+      items:
+        - "NATIVE:DIAMOND:5"
+      effects:
+        particles:
+          - "PARTICLE:HAPPY_VILLAGER:COUNT:10"
+        sounds:
+          - "ENTITY_PLAYER_LEVELUP:PITCH:1.0"
+
+  'day-2':
+    rewards:
+      commands:
+        - "give %player_name% golden_apple 1"
+
+  # ... (töltsd ki 3-23-ig)
+
+  'day-24':
+    # Requirements: A játékosnak kell a 'vault'
+    requirements:
+      money: 1000
+    rewards:
+      commands:
+        - "broadcast &6%player_name% &eátvette a Karácsonyi Főjutalmat!"
+      items:
+        - "NATIVE:NETHERITE_INGOT:1"
+        - "ITEMSADDER:my_items:santa_hat" # Példa custom itemre
+      effects:
+        particles:
+          - "PARTICLE:TOTEM:COUNT:1"
+        sounds:
+          - "ENTITY_FIREWORK_ROCKET_LAUNCH"
+          - "ENTITY_FIREWORK_ROCKET_LARGE_BLAST_FAR"

@@ -1,0 +1,64 @@
+# Calendar ID: example1
+# This is the public, 24-day calendar.
+
+# Basic settings
+gui-title: "&8Adventi Naptár (Közönséges)"
+rows: 5
+permission: "pxcalendar.open.example1"
+
+# Item definitions
+items:
+  # This item fills all empty slots
+  'filler-pane':
+    material: "GRAY_STAINED_GLASS_PANE"
+    name: " "
+
+  # This item is shown when a player hovers over an AVAILABLE day
+  'hover-item':
+    material: "PLAYER_HEAD"
+    # Base64 Head Texture for a black/mystery gift
+    texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzczZTI2NWE2NWI0Yzk3M2YxMThmMWNmMmVlM2RkYjJkNjQ4NDM4Y2EyMTk1ZGMwZmQ4NTM2YjIwZjNhYWUwIn19fQ=="
+    name: "&3&lɴᴀᴘ: %day%"
+    lore:
+      - "&7&o(Mi lehet benne...?)"
+
+  'exit-button':
+    material: "BARRIER"
+    name: "&c&lBezárás"
+    slot: 40 # Középen alul
+
+# Day definitions
+# These items override the 'filler-pane' at their specified slots.
+days:
+  '1':
+    slot: 10
+    reward-bundle-id: "day-1"
+    locked-item: "PLAYER_HEAD:eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjdlYjZkY2VjYjYwZWMxYjM3ZTZlN2Y3M2ZkOGY2N2VmYjZlMjYwZTRlNWQyODVjOWNlYjIzYjY0YjU4YmYifX19" # Red 1
+    available-item: "PLAYER_HEAD:eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvM2Y5OWNiN2M5ZmM0ZDU5MGMxYjIyNzA1YjRkZGNlY2FhYjM0MTUwYjFmYTk0YTY1YzI0N2M3NTI2N2ZiNzIifX19" # Green 1
+    claimed-item: "PLAYER_HEAD:eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmI4YjM3Y2M2ODRkYjYyYjJmYjI2YjE5ZTY5YmU1YjMxN2FmYjQ4ZGFhNTYyYmFkNmU2MjhkZTRkYmU4YjYifX19" # Open Box
+  '2':
+    slot: 11
+    reward-bundle-id: "day-2"
+    locked-item: "PLAYER_HEAD:eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjU0YjE3YjM5MThkZDY2YjEwMjA5YmZlZTFhN2FkZDE5YjYyZDNkY2NmZjdiYjQ0MDE2NDY2YjExNGJkZTMxIn19fQ==" # Red 2
+    available-item: "PLAYER_HEAD:eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDNkYmMyYjQ2MDQ0OTRmZGRjZGUwOTYyMWQ3NNTRiY2U4Y2Y0NWMzNTEyN2YxMzM0NDQ4ZGE0ZDYxZCJ9fX0=" # Green 2
+    claimed-item: "PLAYER_HEAD:eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmI4YjM3Y2M2ODRkYjYyYjJmYjI2YjE5ZTY5YmU1YjMxN2FmYjQ4ZGFhNTYyYmFkNmU2MjhkZTRkYmU4YjYifX19"
+  '3':
+    slot: 12
+    reward-bundle-id: "day-3"
+    locked-item: "PLAYER_HEAD:eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTE3YmNkNGE5YjY5Y2RhY2MyY2FlM2Y3YjYzYjVjMzY3YjU3YTk0M2U5NmY5NjI4ZTNmZGRjZDRlZDY0YmQifX19"
+    available-item: "PLAYER_HEAD:eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmU3MmU4Y2RhYjRkZDU5ZmJkMmRjMjBiYmY1MTUwYjU1NDE4NDE4Nzk0ZGY5YWY0MjA3Y2U5MmVmY2QxMjJjYyJ9fX0="
+    claimed-item: "PLAYER_HEAD:eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmI4YjM3Y2M2ODRkYjYyYjJmYjI2YjE5ZTY5YmU1YjMxN2FmYjQ4ZGFhNTYyYmFkNmU2MjhkZTRkYmU4YjYifX19"
+  # ... (Ezt a mintát követve töltsd ki 4-től 23-ig. A rövidség kedvéért átugrom)
+  # ...
+  '23':
+    slot: 34
+    reward-bundle-id: "day-23"
+    locked-item: "PLAYER_HEAD:..."
+    available-item: "PLAYER_HEAD:..."
+    claimed-item: "PLAYER_HEAD:..."
+  '24':
+    slot: 31 # 4. sor közepe, ahogy kérted
+    reward-bundle-id: "day-24"
+    locked-item: "PLAYER_HEAD:eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2U5Y2M1Y2I4ZmM0YjRkYWY1YjQzYWE0MmYxYjU2ZGJhYjA1YjQxOTlmM2JkM2RkNWM5MWNjZTMzM2FhMjgifX19" # Gold Gift
+    available-item: "PLAYER_HEAD:eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvM2NhMWE5Y2YxMmM5YjQyNjg4MGY4OTI3YmYwZDRmZGRlYjM0ZDNmY2I0M2VhOTU1NWRhOWMyYTMwZDhmODUifX19" # Bright Gold Gift
+    claimed-item: "PLAYER_HEAD:eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmI4YjM3Y2M2ODRkYjYyYjJmYjI2YjE5ZTY5YmU1YjMxN2FmYjQ4ZGFhNTYyYmFkNmU2MjhkZTRkYmU4YjYifX19"

@@ -1,0 +1,50 @@
+name: PxCalendar
+version: '1.0.0'
+main: com.pixydevelopment.pxCalendar.PxCalendarPlugin
+api-version: '1.16'
+authors: [ Kdani1x ]
+softdepend: [PlaceholderAPI, DecentHolograms, HolographicDisplays, ItemsAdder, Oraxen]
+description: A feature-rich Advent Calendar plugin.
+
+commands:
+  pxcalendar:
+    description: Main command for PxCalendar.
+    usage: /<command> [help|open|reload|editor|reset]
+    aliases: [calendar, advent, pxc]
+
+permissions:
+  pxcalendar.use:
+    description: Allows opening the default calendar.
+    default: true
+  pxcalendar.help:
+    description: Allows viewing the help command.
+    default: true
+  pxcalendar.open.example1:
+    description: Permission to open the 'example1' calendar.
+    default: true
+  pxcalendar.open.example2:
+    description: Permission to open the 'example2' calendar.
+    default: op
+  pxcalendar.claim.late:
+    description: Allows claiming rewards from past days (if disabled by default).
+    default: op
+  pxcalendar.openall:
+    description: Unlocks all days in the calendar visually (does not auto-claim).
+    default: op
+  pxcalendar.admin.*:
+    description: Wildcard permission for all admin commands.
+    default: op
+    children:
+      - pxcalendar.reload
+      - pxcalendar.editor
+      - pxcalendar.reset
+      - pxcalendar.update.notify
+  pxcalendar.reload:
+    description: Allows reloading the plugin configuration.
+    default: op
+  pxcalendar.editor:
+    description: Allows using the GUI editor.
+    default: op
+  pxcalendar.reset:
+    description: Allows resetting calendar data for a player.
+    default: op

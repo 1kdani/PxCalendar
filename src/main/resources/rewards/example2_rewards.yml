@@ -1,0 +1,28 @@
+# Reward Bundle: example2
+# Contains all rewards for the 'example2' VIP calendar.
+
+reward-bundles:
+  'vip-day-1':
+    rewards:
+      commands:
+        - "eco give %player_name% 5000"
+        - "msg %player_name% &#AADDFF&lÜdv a VIP naptárban!"
+      items:
+        - "NATIVE:DIAMOND_BLOCK:1"
+      effects:
+        particles:
+          - "PARTICLE:END_ROD:COUNT:20:SPEED:0.01"
+
+  # ...
+
+  'vip-day-24':
+    rewards:
+      commands:
+        - "lp user %player_name% parent addtemp vip 30d"
+        - "broadcast &5&l%player_name% &dkinyitotta a VIP főjutalmat!"
+      items:
+        - "NATIVE:ELYTRA:1"
+        - "NATIVE:DRAGON_EGG:1"
+      effects:
+        particles:
+          - "PARTICLE:DRAGON_BREATH:COUNT:100:SPEED:0.1"

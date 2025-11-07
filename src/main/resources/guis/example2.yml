@@ -1,0 +1,45 @@
+# Calendar ID: example2
+# This is the VIP, 24-day calendar with a border.
+
+# Basic settings
+gui-title: "&5&lVIP Naptár"
+rows: 6
+permission: "pxcalendar.open.example2"
+
+# Item definitions
+items:
+  # The border
+  'filler-pane':
+    material: "PURPLE_STAINED_GLASS_PANE"
+    name: " "
+    # Set slots to create a border (0-8, 9, 17, 18, 26, 27, 35, 36, 44, 45-53)
+    slots: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53]
+
+  'exit-button':
+    material: "BARRIER"
+    name: "&c&lBezárás"
+    slot: 49
+
+# Day definitions
+# A 4x6 grid of 24 days in the middle (slots 10-16, 19-25, etc. are busy)
+# We will use slots: 10-15, 19-24, 28-33, 37-42
+days:
+  '1':
+    slot: 10
+    reward-bundle-id: "vip-day-1"
+    locked-item: "PLAYER_HEAD:..." # Blue 1
+    available-item: "PLAYER_HEAD:..." # Cyan 1
+    claimed-item: "PLAYER_HEAD:..."
+  '2':
+    slot: 11
+    reward-bundle-id: "vip-day-2"
+    locked-item: "PLAYER_HEAD:..."
+    available-item: "PLAYER_HEAD:..."
+    claimed-item: "PLAYER_HEAD:..."
+  # ...
+  '24':
+    slot: 42
+    reward-bundle-id: "vip-day-24"
+    locked-item: "PLAYER_HEAD:..." # Diamond Gift
+    available-item: "PLAYER_HEAD:..." # Netherite Gift
+    claimed-item: "PLAYER_HEAD:..."

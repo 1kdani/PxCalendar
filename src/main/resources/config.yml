@@ -1,0 +1,77 @@
+# Pixy-Development Plugin Configuration
+# Version: 1.0.0
+
+# Set the default language for the plugin.
+# Must match a file name in the 'translations' folder (without .yml).
+language: "hu_HU"
+
+# Database settings
+# Supported types: H2 (file-based, default), MYSQL, POSTGRESQL, MONGODB
+database:
+  type: "H2"
+
+  # Settings for MYSQL/POSTGRESQL
+  host: "localhost"
+  port: 3306
+  database: "pxcalendar"
+  username: "root"
+  password: "password"
+
+  # Settings for MONGODB
+  mongodb-uri: "mongodb://user:pass@host:port/database"
+
+calendar:
+  # The default calendar to open with /pxcalendar open (if no name is specified)
+  default-calendar-id: "example1"
+
+  # TimeZone (e.g., "Europe/Budapest", "UTC", "America/New_York")
+  # A list of valid IDs: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  timezone: "Europe/Budapest"
+
+  # Start date for the calendar (YYYY-MM-DD)
+  # This allows you to start the calendar at a specific date, not just Dec 1st.
+  start-date: "2025-12-01"
+
+  # Can players claim rewards from past days they missed?
+  allow-late-claims: true
+
+  # How many accounts can claim from the same IP address? (Set to -1 to disable)
+  ip-claim-limit: 1
+
+  # Time format for placeholders (like %time_left%)
+  # Uses Java DateTimeFormatter (https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html)
+  # dd:HH:mm:ss -> 01:14:30:05 (1 day, 14 hours, 30 minutes, 5 seconds)
+  # dd. HH. mm. ss -> 01. 14. 30. 05
+  time-format: "dd:HH:mm:ss"
+
+  # How often (in ticks) to update the GUI items (e.g., countdowns)? 20 ticks = 1 sec
+  gui-update-interval: 20
+
+# Sounds for different actions (set to "NONE" to disable)
+# Use Bukkit Sound enum names: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html
+sounds:
+  gui-open: "BLOCK_CHEST_OPEN"
+  gui-click: "UI_BUTTON_CLICK"
+  claim-success: "ENTITY_PLAYER_LEVELUP"
+  claim-fail: "BLOCK_NOTE_BLOCK_BASS"
+  claim-locked: "BLOCK_CHEST_LOCKED"
+
+# Effects settings
+effects:
+  # Globally enable or disable particle effects from rewards
+  enable-particles: true
+
+physical-calendars:
+  # Enable this module? Requires a hologram plugin (DecentHolograms or HolographicDisplays)
+  enable: true
+  # Check for player interactions with blocks in this range (manages performance)
+  interaction-range-blocks: 10
+  # How often (in ticks) to update nearby holograms?
+  hologram-update-interval: 100 # 5 seconds
+
+# Settings for the automatic update checker
+update-checker:
+  # Enable checking for updates on startup
+  enable: true
+  # The permission required to receive an update notification on join. (OPs always receive it)
+  notify-permission: "pxcalendar.admin.update"

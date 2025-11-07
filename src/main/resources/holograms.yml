@@ -1,0 +1,38 @@
+# Hologram configuration for Physical Calendars
+# Define the text that appears above a calendar block.
+# Uses MiniMessage format for <gradient>, <#RRGGBB>, etc.
+# Placeholders:
+# %day% - The day number (e.g., "1")
+# %time_left% - Formatted time until available (e.g., "01:10:30:05")
+# %calendar_name% - The display name of the calendar
+
+hologram-styles:
+  # This style is shown when the day is not yet available.
+  locked:
+    # Set to 'false' to disable this hologram state
+    enable: true
+    lines:
+      - "<red><b>Naptár - Nap %day%</b></red>"
+      - "<gray>Zárva. Visszalévő idő:</gray>"
+      - "<yellow>%time_left%</yellow>"
+
+  # This style is shown when the day is available to be claimed.
+  available:
+    enable: true
+    lines:
+      - "<green><b>Naptár - Nap %day%</b></green>"
+      - "<gradient:yellow:gold><b>KATTINTS A KINYITÁSHOZ!</b></gradient>"
+
+  # This style is shown after the player has claimed the day.
+  claimed:
+    enable: true
+    lines:
+      - "<gray><b>Naptár - Nap %day%</b></gray>"
+      - "<dark_gray>(Már átvéve)</dark_gray>"
+
+  # This style is shown if the player missed the day and late-claims are off.
+  missed:
+    enable: true
+    lines:
+      - "<dark_red><b>Naptár - Nap %day%</b></dark_red>"
+      - "<black> (Lejárt)</black>"

@@ -1,0 +1,46 @@
+# English Language File (en_US)
+# Plugin: PxCalendar
+# You can use & codes and HEX codes (&#RRGGBB or <#RRGGBB>).
+
+plugin-prefix: "&8[&b&lᴘɪxʏ&f&lᴘʟᴜɢɪɴ&8] &7"
+
+messages:
+  reload: "%plugin-prefix%&aᴄᴏɴꜰɪɢᴜʀᴀᴛɪᴏɴ ᴀɴᴅ ʟᴀɴɢᴜᴀɢᴇ ꜰɪʟᴇꜱ ʜᴀᴠᴇ ʙᴇᴇɴ ʀᴇʟᴏᴀᴅᴇᴅ."
+  no-permission: "%plugin-prefix%&cʏᴏᴜ ᴅᴏ ɴᴏᴛ ʜᴀᴠᴇ ᴘᴇʀᴍɪssɪᴏɴ ᴛᴏ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ."
+  player-only: "%plugin-prefix%&cᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴄᴀɴ ᴏɴʟʏ ʙᴇ ᴜsᴇᴅ ʙʏ ᴘʟᴀʏᴇʀs."
+
+  # Update Checker Messages
+  update-available:
+    - "&8&m--------------------------------------------------"
+    - " &f&lPxCalendar &7(by Pixy-Development)"
+    - " "
+    - " &c&lAɴ ᴜᴘᴅᴀᴛᴇ ɪs ᴀᴠᴀɪʟᴀʙʟᴇ!"
+    - "   &7Yᴏᴜʀ ᴠᴇʀsɪᴏɴ: &c%current%"
+    - "   &7Nᴇᴡ ᴠᴇʀsɪᴏɴ: &a%new%"
+    - " &7Pʟᴇᴀsᴇ ᴜᴘᴅᴀᴛᴇ ᴀᴛ: &b<#00AAAA>www.spigotmc.org/..."
+    - "&8&m--------------------------------------------------"
+
+calendar:
+  locked: "&cᴛʜɪs ᴅᴀʏ ɪs sᴛɪʟʟ ʟᴏᴄᴋᴇᴅ! &7(Cᴏᴍᴇ ʙᴀᴄᴋ ᴏɴ Dᴇᴄᴇᴍʙᴇʀ %day%)"
+  available: "&ᴀᴄʟɪᴄᴋ ᴛᴏ ᴄʟᴀɪᴍ ʏᴏᴜʀ ʀᴇᴡᴀʀᴅ ꜰᴏʀ ᴅᴀʏ %day%!"
+  claimed: "&7ʏᴏᴜ ʜᴀᴠᴇ ᴀʟʀᴇᴀᴅʏ ᴄʟᴀɪᴍᴇᴅ ᴛʜɪs ʀᴇᴡᴀʀᴅ."
+  late-claim-disabled: "&cʏᴏᴜ ᴍɪssᴇᴅ ᴛʜɪs ᴅᴀʏ! ʏᴏᴜ ᴄᴀɴ ɴᴏ ʟᴏɴɢᴇʀ ᴄʟᴀɪᴍ ɪᴛ."
+  ip-limit-reached: "&cᴛʜᴇ ʀᴇᴡᴀʀᴅ ʟɪᴍɪᴛ ꜰᴏʀ ʏᴏᴜʀ ɪᴘ ᴀᴅᴅʀᴇss ʜᴀs ʙᴇᴇɴ ʀᴇᴀᴄʜᴇᴅ."
+
+  requirement-fail-permission: "&ᴄʏᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴛʜᴇ ʀᴇǫᴜɪʀᴇᴅ ᴘᴇʀᴍɪssɪᴏn ᴛᴏ ᴄʟᴀɪᴍ ᴛʜɪs."
+  requirement-fail-money: "&ᴄʏᴏᴜ ɴᴇᴇᴅ &a$%amount% &ᴄᴛᴏ ᴄʟᴀɪm ᴛʜɪs."
+
+commands:
+  reload: "%plugin-prefix%&ᴀᴀʟʟ ᴄᴏɴꜰɪɢᴜʀᴀᴛɪᴏɴs, ɢᴜɪs, ᴀɴᴅ ʀᴇᴡᴀʀᴅ ꜰɪʟᴇs ʜᴀᴠᴇ ʙᴇᴇɴ ʀᴇʟᴏᴀᴅᴇᴅ."
+  reset-success: "%plugin-prefix%&ᴀsᴜᴄᴄᴇssꜰᴜʟʟʏ ʀᴇsᴇᴛ ᴛʜᴇ ᴄᴀʟᴇɴᴅᴀʀ ᴅᴀᴛᴀ ꜰᴏʀ &e%player%&ᴀ."
+  player-not-found: "%plugin-prefix%&ᴄᴘʟᴀʏᴇʀ &e%player% &ᴄɴᴏᴛ ꜰᴏᴜɴᴅ."
+  help-header: "&8&m---...---&r &b&lPxCalendar Help&r &8&m---...---"
+  help-footer: "&8&m---...---...---...---...---...---...---"
+
+gui:
+  main-menu-title: "&1&lᴍᴀɪɴ ᴍᴇɴᴜ"
+  items:
+    close-button:
+      name: "&c&lᴄʟᴏsᴇ"
+      lore:
+        - "&7ᴄʟɪᴄᴋ ᴛᴏ ᴄʟᴏsᴇ ᴛʜᴇ ᴍᴇɴᴜ."
