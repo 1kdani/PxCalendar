@@ -14,7 +14,11 @@ import com.pixydevelopment.pxCalendar.core.managers.ConfigManager;
 import com.pixydevelopment.pxCalendar.core.managers.LangManager;
 import com.pixydevelopment.pxCalendar.core.utils.UpdateChecker;
 import com.pixydevelopment.pxCalendar.database.DatabaseManager;
+import com.pixydevelopment.pxCalendar.editor.EditorSessionManager; // ÚJ IMPORT
 import com.pixydevelopment.pxCalendar.gui.GUIManager;
+import com.pixydevelopment.pxCalendar.listeners.EditorChatListener; // ÚJ IMPORT
+import com.pixydevelopment.pxCalendar.editor.EditorManager; // ÚJ
+import com.pixydevelopment.pxCalendar.listeners.EditorClickListener; // ÚJ
 import com.pixydevelopment.pxCalendar.listeners.GUIClickListener; // ÚJ
 import com.pixydevelopment.pxCalendar.listeners.PhysicalCalendarListener; // ÚJ
 import com.pixydevelopment.pxCalendar.listeners.PlayerJoinListener;
@@ -39,32 +43,18 @@ public final class PxCalendarPlugin extends JavaPlugin {
     private GUIManager guiManager;
     private ReminderManager reminderManager;
     private HologramManager hologramManager;
+    private EditorManager editorManager; // ÚJ
+    private EditorSessionManager editorSessionManager; // ÚJ
 
     @Override
     public void onEnable() {
         instance = this;
-
-        // 1. Load Core
         loadCoreManagers();
-
-        // 2. Load Plugin Managers
-        loadPluginManagers();
-
-        // 3. Register Commands
+        loadPluginManagers(); // FRISSÍTVE
         registerCommands();
-
-        // 4. Register Listeners
         registerListeners(); // FRISSÍTVE
-
-        // 5. Check for Updates
-        setupUpdateChecker();
-
-        // 6. Hook into APIs
-        hookApis(); // FRISSÍTVE
-
-        // 7. Start Tasks
+        hookApis();
         startTasks();
-
         getLogger().info(getName() + " has been enabled!");
     }
 
@@ -79,10 +69,6 @@ public final class PxCalendarPlugin extends JavaPlugin {
         getLogger().info(getName() + " has been disabled.");
     }
 
-    // ... (loadCoreManagers, loadPluginManagers) ...
-
-    // (Ezek a metódusok már léteznek, csak győződj meg róla, hogy a tartalmuk hasonló)
-
     private void loadCoreManagers() {
         configManager = new ConfigManager(this);
         langManager = new LangManager(this, configManager);
@@ -96,6 +82,10 @@ public final class PxCalendarPlugin extends JavaPlugin {
         rewardManager.loadRewards();
         guiManager = new GUIManager(this);
         guiManager.loadGUIs();
+
+        // Editor Managerek
+        editorManager = new EditorManager(this);
+        editorSessionManager = new EditorSessionManager(this); // ÚJ
     }
 
     private void registerCommands() {
@@ -106,15 +96,21 @@ public final class PxCalendarPlugin extends JavaPlugin {
     }
 
     private void registerListeners() {
-        // Regisztrálja az adatbetöltőt (ez már megvolt)
+        // Játékos Listenerek
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
-
-        // ÚJ: Regisztrálja a GUI kattintásfigyelőt
         getServer().getPluginManager().registerEvents(new GUIClickListener(this), this);
 
+        // Admin (Editor) Listenerek
+        getServer().getPluginManager().registerEvents(new EditorClickListener(), this);
+        getServer().getPluginManager().registerEvents(new EditorChatListener(this), this); // ÚJ
+
+        // Fizikai Naptár Listener
         if (configManager.getConfig().getBoolean("physical-calendars.enable", true)) {
             getServer().getPluginManager().registerEvents(new PhysicalCalendarListener(this), this);
         }
+
+        // Update Listener
+        setupUpdateChecker();
 
         getLogger().info("Listeners registered.");
     }
@@ -154,10 +150,6 @@ public final class PxCalendarPlugin extends JavaPlugin {
         }
     }
 
-    public HologramManager getHologramManager() {
-        return hologramManager;
-    }
-
     // --- Public Getters (Ezek már léteznek) ---
     public static PxCalendarPlugin getInstance() { return instance; }
     public LangManager getLangManager() { return langManager; }
@@ -167,4 +159,13 @@ public final class PxCalendarPlugin extends JavaPlugin {
     public CalendarManager getCalendarManager() { return calendarManager; }
     public RewardManager getRewardManager() { return rewardManager; }
     public GUIManager getGuiManager() { return guiManager; }
+    public HologramManager getHologramManager() { return hologramManager; }
+
+    // ÚJ GETTER
+    public EditorManager getEditorManager() {
+        return editorManager;
+    }
+    public EditorSessionManager getEditorSessionManager() {
+        return editorSessionManager;
+    }
 }

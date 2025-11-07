@@ -95,10 +95,114 @@ commands:
       text: "&b/pxc pcal delete &7- &fTörli a fizikai naptárat, amit nézel."
   help-footer: "&8&m---...---...---...---...---...---...---"
 
-gui:
-  main-menu-title: "&1&lꜰőᴍᴇɴᴜ"
-  items:
-    close-button:
-      name: "&c&lʙᴇᴢᴀʀᴀs"
+# --- Admin GUI Editor ---
+editor:
+  title-main: "&8PxCalendar Admin Szerkesztő"
+  title-config: "&8Szerkesztő &7» Beállítások"
+
+  main-menu:
+    calendars:
+      name: "&b&lNᴀᴘᴛáʀ Lɪsᴛᴀ"
       lore:
-        - "&7ᴋᴀᴛᴛɪɴᴛs ᴀ ᴍᴇɴᴜ ʙᴇᴢᴀʀᴀsᴀʜᴏᴢ."
+        - "&7Néᴢᴅ, sᴢᴇʀᴋᴇsᴢᴅ, ᴠᴀɢʏ"
+        - "&7ʜᴏᴢᴢ ʟéᴛʀᴇ úᴊ ɴᴀᴘᴛáʀᴀᴋᴀᴛ."
+    rewards:
+      name: "&6&lJᴜᴛᴀʟᴏᴍ Sᴢᴇʀᴋᴇsᴢᴛő"
+      lore:
+        - "&7Sᴢᴇʀᴋᴇsᴢᴅ ᴀ ᴊᴜᴛᴀʟᴏᴍ"
+        - "&7ᴄsᴏᴍᴀɢᴏᴋᴀᴛ."
+    config:
+      name: "&c&lÁʟᴛᴀʟáɴᴏs Bᴇáʟʟíᴛásᴏᴋ"
+      lore:
+        - "&7Sᴢᴇʀᴋᴇsᴢᴅ ᴀ ᴘʟᴜɢɪɴ"
+        - "&7ᴀʟᴀᴘ ʙᴇáʟʟíᴛásᴀɪᴛ (config.yml)."
+
+  config-menu:
+    timezone:
+      name: "&eIᴅőᴢóɴᴀ"
+      lore:
+        - "&7Jᴇʟᴇɴʟᴇɢɪ: &f%value%"
+        - "&c(Cꜱᴀᴋ ᴀ ᴄᴏɴꜰɪɢ.ʏᴍʟ-ʙᴇɴ)"
+    start-date:
+      name: "&eKᴇᴢᴅő Dáᴛᴜᴍ"
+      lore:
+        - "&7Jᴇʟᴇɴʟᴇɢɪ: &f%value%"
+        - "&c(Cꜱᴀᴋ ᴀ ᴄᴏɴꜰɪɢ.ʏᴍʟ-ʙᴇɴ)"
+    late-claim:
+      name: "&aKésʟᴇʟᴇᴛᴇᴛᴛ Áᴛᴠéᴛᴇʟ"
+      lore:
+        - "&7A ᴊáᴛéᴋᴏsᴏᴋ áᴛᴠᴇʜᴇᴛɪᴋ"
+        - "&7ᴀ ᴋɪʜᴀɢʏᴏᴛᴛ ɴᴀᴘᴏᴋᴀᴛ."
+        - " "
+        - " &7Áʟʟᴀᴘᴏᴛ: %status%"
+    ip-limit:
+      name: "&cIP Kᴏʀʟáᴛ"
+      lore:
+        - "&7Jᴇʟᴇɴʟᴇɢɪ: &f%value%"
+        - "&c(Cꜱᴀᴋ ᴀ ᴄᴏɴꜰɪɢ.ʏᴍʟ-ʙᴇɴ)"
+    reminders:
+      name: "&bEᴍʟéᴋᴇᴢᴛᴇᴛőᴋ"
+      lore:
+        - "&7Eᴍʟéᴋᴇᴢᴛᴇᴛɪ ᴀ ᴊáᴛéᴋᴏsᴏᴋᴀᴛ"
+        - "&7ᴀᴢ áᴛ ɴᴇᴍ ᴠᴇᴛᴛ ᴊᴜᴛᴀʟᴍᴀᴋʀᴀ."
+        - " "
+        - " &7Áʟʟᴀᴘᴏᴛ: %status%"
+    holograms:
+      name: "&dFɪᴢɪᴋᴀɪ Nᴀᴘᴛáʀᴀᴋ"
+      lore:
+        - "&7Eɴɢᴇᴅéʟʏᴇᴢɪ ᴀ ʜᴏʟᴏɢʀᴀᴍᴏᴋᴀᴛ"
+        - "&7éꜱ ʙʟᴏᴋᴋ-ᴋᴀᴛᴛɪɴᴛásᴛ."
+        - " "
+        - " &7Áʟʟᴀᴘᴏᴛ: %status%"
+
+  # GUI gombok
+  back-button: "&c« Vɪssᴢᴀ ᴀ ꜰőᴍᴇɴüʙᴇ"
+  status-enabled: "&a&lEɴɢᴇᴅéʟʏᴇᴢᴠᴇ"
+  status-disabled: "&c&lTɪʟᴛᴠᴀ"
+
+  title-list-calendars: "&8Szerkesztő &7» Naptár Lista"
+  title-edit-calendar: "&8Szerkesztő &7» %name%"
+
+  calendar-list:
+    create-new:
+      name: "&a&lÚᴊ Nᴀᴘᴛáʀ Léᴛʀᴇʜᴏᴢásᴀ"
+      lore:
+        - "&7Kᴀᴛᴛɪɴᴛs ᴇɢʏ úᴊ ɴᴀᴘᴛáʀ .ʏᴍʟ"
+        - "&7ꜰáᴊʟ ʟéᴛʀᴇʜᴏᴢásáʜᴏᴢ."
+    calendar-item:
+      name: "&b&l%name%"
+      lore:
+        - "&7Fáᴊʟ: &f%file_name%"
+        - "&7Eɴɢᴇᴅéʟʏ: &f%permission%"
+        - "&7Sᴏʀᴏᴋ: &f%rows%"
+        - " "
+        - "&a» Kᴀᴛᴛɪɴᴛs ᴀ Sᴢᴇʀᴋᴇsᴢᴛésʜᴇᴢ"
+        - "&c» Sʜɪꜰᴛ-Jᴏʙʙ-Kᴀᴛᴛɪɴᴛs ᴀ Töʀʟésʜᴇᴢ"
+
+  calendar-edit:
+    edit-slots:
+      name: "&aGUI Eʟʀᴇɴᴅᴇᴢés Sᴢᴇʀᴋᴇsᴢᴛésᴇ"
+      lore:
+        - "&7Vɪᴢᴜáʟɪsᴀɴ sᴢᴇʀᴋᴇsᴢᴛʜᴇᴛᴇᴅ"
+        - "&7ᴀ ᴛáʀɢʏᴀᴋᴀᴛ éꜱ ɴᴀᴘᴏᴋᴀᴛ."
+    edit-rewards:
+      name: "&6Jᴜᴛᴀʟᴍᴀᴋ Sᴢᴇʀᴋᴇsᴢᴛésᴇ"
+      lore:
+        - "&7Váʟᴛᴏᴢᴛᴀsᴅ ᴍᴇɢ ᴀ ɴᴀᴘᴏᴋʜᴏᴢ"
+        - "&7ᴛᴀʀᴛᴏᴢó ᴊᴜᴛᴀʟᴏᴍ ᴄsᴏᴍᴀɢᴏᴋᴀᴛ."
+    delete:
+      name: "&c&lNᴀᴘᴛáʀ Töʀʟésᴇ"
+      lore:
+        - "&4&lFIGYELEM: &cEᴢ ᴠɪssᴢᴀᴠᴏɴʜᴀᴛᴀᴛʟᴀɴ."
+        - "&7Töʀʟɪ ᴀ &fguis/%file_name%&7 ꜰáᴊʟᴛ."
+
+  # Chat prompts
+  prompt-calendar-name:
+    - " "
+    - "%plugin-prefix%&eÍrd be a chat-be az új naptár azonosítóját (ID)."
+    - "&7(pl. 'vip' vagy 'uj_naptar'. Egybeírandó)."
+    - "&7Írd be: 'cancel' a megszakításhoz."
+    - " "
+  prompt-calendar-exists: "%plugin-prefix%&cMár létezik naptár '&e%id%&c' azonosítóval."
+  prompt-calendar-created: "%plugin-prefix%&aSikeresen létrehoztad a(z) '&e%id%&a' naptárat. Megnyitás..."
+  prompt-cancelled: "%plugin-prefix%&cMűvelet megszakítva."

@@ -95,10 +95,115 @@ commands:
       text: "&b/pxc pcal delete &7- &fDeletes the physical calendar you are looking at."
   help-footer: "&8&m---...---...---...---...---...---...---"
 
-gui:
-  main-menu-title: "&1&lᴍᴀɪɴ ᴍᴇɴᴜ"
-  items:
-    close-button:
-      name: "&c&lᴄʟᴏsᴇ"
+# --- Admin GUI Editor ---
+editor:
+  title-main: "&8PxCalendar Admin Editor"
+  title-config: "&8Editor &7» Config"
+
+  main-menu:
+    calendars:
+      name: "&b&lCᴀʟᴇɴᴅᴀʀ Lɪsᴛ"
       lore:
-        - "&7ᴄʟɪᴄᴋ ᴛᴏ ᴄʟᴏsᴇ ᴛʜᴇ ᴍᴇɴᴜ."
+        - "&7Vɪᴇᴡ, ᴇᴅɪᴛ, ᴏʀ ᴄʀᴇᴀᴛᴇ ɴᴇᴡ"
+        - "&7ᴄᴀʟᴇɴᴅᴀʀ ɢᴜɪs."
+    rewards:
+      name: "&6&lRᴇᴡᴀʀᴅ Eᴅɪᴛᴏʀ"
+      lore:
+        - "&7Eᴅɪᴛ ʀᴇᴡᴀʀᴅ ʙᴜɴᴅʟᴇs."
+    config:
+      name: "&c&lGᴇɴᴇʀᴀʟ Sᴇᴛᴛɪɴɢs"
+      lore:
+        - "&7Eᴅɪᴛ ᴛʜᴇ ɢᴇɴᴇʀᴀʟ ᴘʟᴜɢɪɴ"
+        - "&7sᴇᴛᴛɪɴɢs (config.yml)."
+
+  config-menu:
+    timezone:
+      name: "&eTɪᴍᴇᴢᴏɴᴇ"
+      lore:
+        - "&7Cᴜʀʀᴇɴᴛ: &f%value%"
+        - "&c(Eᴅɪᴛ ɪɴ ᴄᴏɴꜰɪɢ.ʏᴍʟ)"
+    start-date:
+      name: "&eSᴛᴀʀᴛ Dᴀᴛᴇ"
+      lore:
+        - "&7Cᴜʀʀᴇɴᴛ: &f%value%"
+        - "&c(Eᴅɪᴛ ɪɴ ᴄᴏɴꜰɪɢ.ʏᴍʟ)"
+    late-claim:
+      name: "&aAʟʟᴏᴡ Lᴀᴛᴇ Cʟᴀɪᴍs"
+      lore:
+        - "&7Aʟʟᴏᴡ ᴘʟᴀʏᴇʀs ᴛᴏ ᴄʟᴀɪᴍ"
+        - "&7ᴍɪssᴇᴅ ᴅᴀʏs."
+        - " "
+        - " &7Sᴛᴀᴛᴜs: %status%"
+    ip-limit:
+      name: "&cIP Cʟᴀɪᴍ Lɪᴍɪᴛ"
+      lore:
+        - "&7Cᴜʀʀᴇɴᴛ: &f%value%"
+        - "&c(Eᴅɪᴛ ɪɴ ᴄᴏɴꜰɪɢ.ʏᴍʟ)"
+    reminders:
+      name: "&bEɴᴀʙʟᴇ Rᴇᴍɪɴᴅᴇʀs"
+      lore:
+        - "&7Rᴇᴍɪɴᴅ ᴘʟᴀʏᴇʀs ᴏꜰ"
+        - "&7ᴜɴᴄʟᴀɪᴍᴇᴅ ʀᴇᴡᴀʀᴅs."
+        - " "
+        - " &7Sᴛᴀᴛᴜs: %status%"
+    holograms:
+      name: "&dPʜʏsɪᴄᴀʟ Cᴀʟᴇɴᴅᴀʀs"
+      lore:
+        - "&7Eɴᴀʙʟᴇ ʜᴏʟᴏɢʀᴀᴍs ᴀɴᴅ"
+        - "&7ʙʟᴏᴄᴋ ɪɴᴛᴇʀᴀᴄᴛɪᴏɴs."
+        - " "
+        - " &7Sᴛᴀᴛᴜs: %status%"
+
+  # GUI gombok
+  back-button: "&c« Bᴀᴄᴋ ᴛᴏ Mᴀɪɴ Mᴇɴᴜ"
+  status-enabled: "&a&lEɴᴀʙʟᴇᴅ"
+  status-disabled: "&c&lDɪsᴀʙʟᴇᴅ"
+
+  title-list-calendars: "&8Editor &7» Calendar List"
+  title-edit-calendar: "&8Editor &7» %name%"
+  calendar-list:
+    create-new:
+      name: "&a&lCʀᴇᴀᴛᴇ Nᴇᴡ Cᴀʟᴇɴᴅᴀʀ"
+      lore:
+        - "&7Cʟɪᴄᴋ ᴛᴏ ᴄʀᴇᴀᴛᴇ ᴀ ɴᴇᴡ"
+        - "&7ᴄᴀʟᴇɴᴅᴀʀ .ʏᴍʟ ꜰɪʟᴇ."
+
+    calendar-item:
+      name: "&b&l%name%"
+      lore:
+        - "&7Fɪʟᴇ: &f%file_name%"
+        - "&7Pᴇʀᴍɪssɪᴏɴ: &f%permission%"
+        - "&7Rᴏᴡs: &f%rows%"
+        - " "
+        - "&a» Cʟɪᴄᴋ ᴛᴏ Eᴅɪᴛ"
+        - "&c» Sʜɪꜰᴛ-Rɪɢʜᴛ-Cʟɪᴄᴋ ᴛᴏ Dᴇʟᴇᴛᴇ"
+
+  calendar-edit:
+    edit-slots:
+      name: "&aEᴅɪᴛ GUI Lᴀʏᴏᴜᴛ"
+      lore:
+        - "&7Vɪsᴜᴀʟʟʏ ᴇᴅɪᴛ ᴛʜᴇ ɪᴛᴇᴍs"
+        - "&7ᴀɴᴅ ᴅᴀʏs ɪɴ ᴛʜᴇ ɢᴜɪ."
+
+    edit-rewards:
+      name: "&6Eᴅɪᴛ Rᴇᴡᴀʀᴅs"
+      lore:
+        - "&7Cʜᴀɴɢᴇ ᴛʜᴇ ʀᴇᴡᴀʀᴅ ʙᴜɴᴅʟᴇs"
+        - "&7ꜰᴏʀ ᴇᴀᴄʜ ᴅᴀʏ."
+
+    delete:
+      name: "&c&lDᴇʟᴇᴛᴇ Cᴀʟᴇɴᴅᴀʀ"
+      lore:
+        - "&4&lWARNING: &cTʜɪs ᴄᴀɴɴᴏᴛ ʙᴇ ᴜɴᴅᴏɴᴇ."
+        - "&7Dᴇʟᴇᴛᴇs ᴛʜᴇ &fguis/%file_name%&7 ꜰɪʟᴇ."
+
+  # Chat prompts
+  prompt-calendar-name:
+    - " "
+    - "%plugin-prefix%&ePlease type the new calendar ID in chat."
+    - "&7(e.g., 'vip' or 'new_calendar'. Must be one word)."
+    - "&7Type 'cancel' to exit."
+    - " "
+  prompt-calendar-exists: "%plugin-prefix%&cA calendar with ID '&e%id%&c' already exists."
+  prompt-calendar-created: "%plugin-prefix%&aSuccessfully created calendar '&e%id%&a'. Opening editor..."
+  prompt-cancelled: "%plugin-prefix%&cOperation cancelled."
