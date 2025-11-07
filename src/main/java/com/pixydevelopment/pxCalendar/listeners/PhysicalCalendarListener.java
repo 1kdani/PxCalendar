@@ -20,7 +20,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 public class PhysicalCalendarListener implements Listener {
 
     private final PxCalendarPlugin plugin;
-    private final HologramManager hologramManager; // We get the data from here
+    private final HologramManager hologramManager;
 
     public PhysicalCalendarListener(PxCalendarPlugin plugin) {
         this.plugin = plugin;
@@ -29,16 +29,18 @@ public class PhysicalCalendarListener implements Listener {
 
     @EventHandler
     public void onBlockClick(PlayerInteractEvent event) {
-        if (event.getAction() != Action.RIGHT_CLICK_BLOCK) {
+        if (event.getAction() != Action.RIGHT_CLICK_BLOCK || event.getClickedBlock() == null) {
             return;
         }
 
         if (hologramManager == null) return; // Disabled
 
         Location loc = event.getClickedBlock().getLocation();
-        String locationHash = PhysicalCalendar.getLocationHash(loc); // We need to add this static method
+        // HELPER METÓDUS JAVÍTVA
+        String locationHash = PhysicalCalendar.getLocationHash(loc);
 
-        PhysicalCalendar pCal = hologramManager.getPhysicalCalendar(locationHash); // We need this method
+        // HELPER METÓDUS JAVÍTVA
+        PhysicalCalendar pCal = hologramManager.getPhysicalCalendar(locationHash);
 
         if (pCal != null) {
             // This is a calendar block!

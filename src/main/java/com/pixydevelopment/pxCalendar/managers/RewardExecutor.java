@@ -7,6 +7,7 @@ package com.pixydevelopment.pxCalendar.managers;
 
 import com.pixydevelopment.pxCalendar.PxCalendarPlugin;
 import com.pixydevelopment.pxCalendar.calendar.RewardBundle;
+import com.pixydevelopment.pxCalendar.core.managers.LangManager; // ÚJ IMPORT
 import org.bukkit.Bukkit;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
@@ -22,9 +23,11 @@ public class RewardExecutor {
 
     private final PxCalendarPlugin plugin;
     private final boolean particlesEnabled;
+    private final LangManager lang; // ÚJ MEZŐ
 
     public RewardExecutor(PxCalendarPlugin plugin) {
         this.plugin = plugin;
+        this.lang = plugin.getLangManager(); // ÚJ PÉLDÁNYOSÍTÁS
         this.particlesEnabled = plugin.getConfigManager().getConfig().getBoolean("effects.enable-particles", true);
     }
 
@@ -51,16 +54,16 @@ public class RewardExecutor {
             if (player.getInventory().firstEmpty() == -1) {
                 // Inventory is full, drop it at their feet
                 player.getWorld().dropItem(player.getLocation(), item);
-                lang.sendMessage(player, "messages.inventory-full"); // Don't forget to add this to lang.yml!
+                lang.sendMessage(player, "messages.inventory-full"); // Ez most már működni fog
             } else {
                 player.getInventory().addItem(item);
             }
         }
 
         // 3. Play Sounds
+        // ... (a kódod többi része itt változatlan) ...
         for (String soundString : bundle.getSounds()) {
             try {
-                // Format: SOUND_NAME:VOLUME:PITCH
                 String[] parts = soundString.split(":");
                 Sound sound = Sound.valueOf(parts[0].toUpperCase());
                 float volume = (parts.length > 1) ? Float.parseFloat(parts[1]) : 1.0f;
@@ -75,7 +78,6 @@ public class RewardExecutor {
         if (particlesEnabled) {
             for (String particleString : bundle.getParticles()) {
                 try {
-                    // Format: PARTICLE_NAME:COUNT:SPEED
                     String[] parts = particleString.split(":");
                     Particle particle = Particle.valueOf(parts[0].toUpperCase());
                     int count = (parts.length > 1) ? Integer.parseInt(parts[1]) : 50;

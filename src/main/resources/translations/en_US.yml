@@ -14,6 +14,11 @@ messages:
   physical-cal-removed: "%plugin-prefix%&aRᴇᴍᴏᴠᴇᴅ ᴛʜᴇ ᴘʜʏsɪᴄᴀʟ ᴄᴀʟᴇɴᴅᴀʀ ꜰʀᴏᴍ ᴛʜɪs ʙʟᴏᴄᴋ."
   physical-cal-not-found: "%plugin-prefix%&cTʜᴇʀᴇ ɪs ɴᴏ ᴘʜʏsɪᴄᴀʟ ᴄᴀʟᴇɴᴅᴀʀ ᴀᴛ ᴛʜɪs ʙʟᴏᴄᴋ."
 
+  inventory-full: "%plugin-prefix%&cYᴏᴜʀ ɪɴᴠᴇɴᴛᴏʀʏ ɪs ꜰᴜʟʟ! Tʜᴇ ʀᴇᴡᴀʀᴅ ʜᴀs ʙᴇᴇɴ ᴅʀᴏᴘᴘᴇᴅ ᴀᴛ ʏᴏᴜʀ ꜰᴇᴇᴛ."
+  usage-reset: "%plugin-prefix%&cUsage: /pxc reset <player>"
+  usage-pcal-create: "%plugin-prefix%&cUsage: /pxc pcal create <calendarId>"
+  error-generic: "%plugin-prefix%&cAɴ ᴜɴᴇxᴘᴇᴄᴛᴇᴅ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ. Cʜᴇᴄᴋ ᴛʜᴇ ᴄᴏɴsᴏʟᴇ."
+
   # Update Checker Messages
   update-available:
     - "&8&m--------------------------------------------------"

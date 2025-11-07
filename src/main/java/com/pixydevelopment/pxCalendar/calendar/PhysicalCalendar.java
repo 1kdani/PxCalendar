@@ -19,10 +19,7 @@ public class PhysicalCalendar {
     public PhysicalCalendar(Location location, String calendarId) {
         this.location = location;
         this.calendarId = calendarId;
-        this.id = location.getWorld().getName() + "_" +
-                location.getBlockX() + "_" +
-                location.getBlockY() + "_" +
-                location.getBlockZ();
+        this.id = getLocationHash(location); // A statikus metódus használata
     }
 
     public String getId() {
@@ -35,5 +32,20 @@ public class PhysicalCalendar {
 
     public String getCalendarId() {
         return calendarId;
+    }
+
+    /**
+     * Creates a standardized unique ID string from a Location.
+     * @param location The block location
+     * @return A hash string (e.g., "world_10_65_-100")
+     */
+    public static String getLocationHash(Location location) {
+        if (location == null || location.getWorld() == null) {
+            return "invalid_location";
+        }
+        return location.getWorld().getName() + "_" +
+                location.getBlockX() + "_" +
+                location.getBlockY() + "_" +
+                location.getBlockZ();
     }
 }

@@ -8,6 +8,16 @@ messages:
   reload: "%plugin-prefix%&aᴀ ᴋᴏɴꜰɪɢᴜʀᴀᴄɪᴏ ᴇs ᴀ ɴʏᴇʟᴠɪ ꜰᴀᴊʟᴏᴋ ᴜᴊʀᴀ ʟᴇᴛᴛᴇᴋ ᴛᴏʟᴛᴠᴇ."
   no-permission: "%plugin-prefix%&cɴɪɴᴄs ᴇɴɢᴇᴅᴇʟʏᴇᴅ ᴀ ᴘᴀʀᴀɴᴄs ʜᴀsᴢɴᴀʟᴀᴛᴀʜᴏᴢ."
   player-only: "%plugin-prefix%&cᴇᴢᴛ ᴀ ᴘᴀʀᴀɴᴄsᴏᴛ ᴄsᴀᴋ ᴊᴀᴛᴇᴋᴏsᴏᴋ ʜᴀsᴢɴᴀʟʜᴀᴛᴊᴀᴋ."
+  calendar-not-found: "%plugin-prefix%&cCᴀʟᴇɴᴅᴀʀ '&e%id%&c' ɴᴏᴛ ꜰᴏᴜɴᴅ."
+  must-look-at-block: "%plugin-prefix%&cYᴏᴜ ᴍᴜsᴛ ʙᴇ ʟᴏᴏᴋɪɴɢ ᴀᴛ ᴀ ʙʟᴏᴄᴋ."
+  physical-cal-created: "%plugin-prefix%&aSᴜᴄᴄᴇssꜰᴜʟʟʏ ᴄʀᴇᴀᴛᴇᴅ ᴀ ᴘʜʏsɪᴄᴀʟ ᴄᴀʟᴇɴᴅᴀʀ ꜰᴏʀ '&e%id%&a' ʜᴇʀᴇ."
+  physical-cal-removed: "%plugin-prefix%&aRᴇᴍᴏᴠᴇᴅ ᴛʜᴇ ᴘʜʏsɪᴄᴀʟ ᴄᴀʟᴇɴᴅᴀʀ ꜰʀᴏᴍ ᴛʜɪs ʙʟᴏᴄᴋ."
+  physical-cal-not-found: "%plugin-prefix%&cTʜᴇʀᴇ ɪs ɴᴏ ᴘʜʏsɪᴄᴀʟ ᴄᴀʟᴇɴᴅᴀʀ ᴀᴛ ᴛʜɪs ʙʟᴏᴄᴋ."
+
+  inventory-full: "%plugin-prefix%&cTᴇʟᴇ ᴠᴀɴ ᴀᴢ ɪɴᴠᴇɴᴛáʀᴀᴅ! A ᴊᴜᴛᴀʟᴍᴀᴛ ᴀ ʟáʙᴀᴅʜᴏᴢ ᴅᴏʙᴛᴜᴋ."
+  usage-reset: "%plugin-prefix%&cHasználat: /pxc reset <játékos>"
+  usage-pcal-create: "%plugin-prefix%&cHasználat: /pxc pcal create <naptárId>"
+  error-generic: "%plugin-prefix%&cVáʀᴀᴛʟᴀɴ ʜɪʙᴀ ᴛöʀᴛéɴᴛ. Eʟʟᴇɴőʀɪᴢᴅ ᴀ ᴋᴏɴᴢᴏʟᴛ."
 
   # Update Checker Messages
   update-available:

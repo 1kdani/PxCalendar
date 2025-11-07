@@ -7,6 +7,7 @@ package com.pixydevelopment.pxCalendar.gui;
 
 import com.pixydevelopment.pxCalendar.PxCalendarPlugin;
 import com.pixydevelopment.pxCalendar.calendar.Calendar;
+import com.pixydevelopment.pxCalendar.calendar.PlayerCalendarData; // ÚJ IMPORT
 import com.pixydevelopment.pxCalendar.managers.DataManager;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -70,20 +71,11 @@ public class GUIManager {
         }
     }
 
-    /**
-     * Gets a loaded calendar by its ID.
-     * @param id The ID (e.g., "example1")
-     * @return The Calendar object, or null if not found.
-     */
     public Calendar getCalendar(String id) {
         if (id == null) return null;
         return loadedCalendars.get(id.toLowerCase());
     }
 
-    /**
-     * Gets all loaded calendars.
-     * @return A collection of all Calendar objects.
-     */
     public Collection<Calendar> getLoadedCalendars() {
         return loadedCalendars.values();
     }
@@ -108,18 +100,16 @@ public class GUIManager {
         }
 
         // Get the player's data
-        var playerData = dataManager.getPlayerData(player);
+        PlayerCalendarData playerData = dataManager.getPlayerData(player); // NÉVVÁLTOZÁS: playerData
         if (playerData == null) {
             // This can happen if the player just logged in and data hasn't loaded
             plugin.getLangManager().sendMessage(player, "&cYour data is still loading, please wait a moment and try again.");
             return;
         }
 
-        // Create and open the dynamic GUI
-        // We will create this class in the NEXT step.
-        // new CalendarGUI(plugin, player, calendar, playerData).open();
-
-        // TODO: This is the next class to write.
-        player.sendMessage("DEBUG: Opening calendar " + calendar.getTitle());
+        // --- KRITIKUS JAVÍTÁS ---
+        // A te verziódban itt egy DEBUG üzenet volt.
+        // Ez a sor ténylegesen megnyitja a GUI-t.
+        new CalendarGUI(plugin, player, calendar, playerData).open();
     }
 }
