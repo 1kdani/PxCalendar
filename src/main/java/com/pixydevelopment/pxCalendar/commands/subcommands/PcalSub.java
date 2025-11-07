@@ -19,7 +19,7 @@ import org.bukkit.entity.Player;
 /**
  * Main sub-command for /pxc pcal [create|delete]
  */
-public class PcalSub implements CommandBase {
+public class PcalSub implements CommandBase { // Átnevezve PcalSub-ra
 
     private final PxCalendarPlugin plugin;
     private final LangManager lang;

@@ -100,7 +100,7 @@ public class GUIManager {
         }
 
         // Get the player's data
-        PlayerCalendarData playerData = dataManager.getPlayerData(player); // NÉVVÁLTOZÁS: playerData
+        PlayerCalendarData playerData = dataManager.getPlayerData(player);
         if (playerData == null) {
             // This can happen if the player just logged in and data hasn't loaded
             plugin.getLangManager().sendMessage(player, "&cYour data is still loading, please wait a moment and try again.");
