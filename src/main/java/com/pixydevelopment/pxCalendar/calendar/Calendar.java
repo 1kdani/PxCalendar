@@ -7,13 +7,18 @@ package com.pixydevelopment.pxCalendar.calendar;
 
 import com.pixydevelopment.pxCalendar.core.utils.ChatUtil;
 import com.pixydevelopment.pxCalendar.core.utils.ItemBuilder;
+import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 
+import com.pixydevelopment.pxCalendar.PxCalendarPlugin; // ÚJ IMPORT
+import com.pixydevelopment.pxCalendar.managers.CalendarManager; // ÚJ IMPORT
+import org.bukkit.entity.Player; // ÚJ IMPORT
+import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors; // ÚJ IMPORT
 
 /**
  * Represents a fully loaded Calendar GUI configuration from a .yml file.
@@ -34,6 +39,8 @@ public class Calendar {
 
     private ItemStack hoverItem;
 
+    private final Map<Integer, Integer> daySlotMap; // Map<DayNumber, Slot>
+
     public Calendar(String id, FileConfiguration config) {
         this.id = id;
         this.title = ChatUtil.format(config.getString("gui-title", "&cInvalid Title"));
@@ -43,6 +50,7 @@ public class Calendar {
         this.staticItems = new HashMap<>();
         this.daysBySlot = new HashMap<>();
         this.daysByDayNumber = new HashMap<>();
+        this.daySlotMap = new HashMap<>(); // ÚJ
 
         loadItems(config);
         loadDays(config);
@@ -129,6 +137,7 @@ public class Calendar {
 
                 daysByDayNumber.put(dayNumber, calendarDay);
                 daysBySlot.put(calendarDay.getSlot(), calendarDay);
+                daySlotMap.put(dayNumber, calendarDay.getSlot()); // ÚJ
 
             } catch (NumberFormatException e) {
                 System.err.println("[PxCalendar] Invalid day number: " + dayKey + " in " + id + ".yml");
@@ -148,6 +157,14 @@ public class Calendar {
     public Map<Integer, CalendarDay> getDaysBySlot() { return daysBySlot; }
     public Map<Integer, CalendarDay> getDaysByDayNumber() { return daysByDayNumber; }
     public ItemStack getHoverItem() { return hoverItem; }
+
+    /**
+     * Helper method for the Editor GUI.
+     * @return A Map<DayNumber, Slot>
+     */
+    public Map<Integer, Integer> getDaySlotMap() { // ÚJ METÓDUS
+        return this.daySlotMap;
+    }
 
     /**
      * Helper method for PAPI.

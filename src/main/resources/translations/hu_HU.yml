@@ -206,3 +206,38 @@ editor:
   prompt-calendar-exists: "%plugin-prefix%&cMár létezik naptár '&e%id%&c' azonosítóval."
   prompt-calendar-created: "%plugin-prefix%&aSikeresen létrehoztad a(z) '&e%id%&a' naptárat. Megnyitás..."
   prompt-cancelled: "%plugin-prefix%&cMűvelet megszakítva."
+  title-slot-editor: "&8Szerkesztő &7» Elrendezés (%name%)"
+  title-slot-edit-menu: "&8Szerkesztő &7» Slot %slot% Szerkesztése"
+  title-day-selector: "&8Szerkesztő &7» Válassz egy Napot (1-24)"
+
+  slot-editor:
+    info-item:
+      name: "&b&lElrendezés Szerkesztő"
+      lore:
+        - "&7Kattints bármelyik slotra a"
+        - "&7típusának megváltoztatásához."
+        - " "
+        - "&a» Kᴀᴛᴛɪɴᴛs ᴀ Tárɢʏ Bᴇállíᴛásáʜᴏᴢ"
+        - "&c» Jᴏʙʙ-Kᴀᴛᴛɪɴᴛs ᴀ Sʟᴏᴛ Töʀʟéséʜᴇᴢ"
+    back-to-cal-editor: "&c« Vissza a Naptár Menübe"
+
+  slot-edit-menu:
+    set-day:
+      name: "&a&lNᴀᴘ Bᴇállíᴛásᴀ"
+      lore:
+        - "&7Rendelj ehhez a slothoz"
+        - "&7egy naptári napot (pl. 1. Nap)."
+    set-filler:
+      name: "&8&lKɪᴛöʟᴛő Táʀɢʏ Bᴇállíᴛásᴀ"
+      lore:
+        - "&7Ez a tárgy fog megjelenni"
+        - "&7itt, ha ez nem egy nap."
+    set-static:
+      name: "&e&lSᴛᴀᴛɪᴋᴜs Táʀɢʏ Bᴇállíᴛásᴀ"
+      lore:
+        - "&7Rendelj egy fix tárgyat ehhez"
+        - "&7a slothoz (pl. kilépő gomb)."
+    clear-slot:
+      name: "&c&lSʟᴏᴛ Töʀʟésᴇ"
+      lore:
+        - "&7Eltávolítja a tárgyat a GUI-ból."

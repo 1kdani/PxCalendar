@@ -207,3 +207,36 @@ editor:
   prompt-calendar-exists: "%plugin-prefix%&cA calendar with ID '&e%id%&c' already exists."
   prompt-calendar-created: "%plugin-prefix%&aSuccessfully created calendar '&e%id%&a'. Opening editor..."
   prompt-cancelled: "%plugin-prefix%&cOperation cancelled."
+  title-slot-editor: "&8Editor &7» Layout (%name%)"
+  title-slot-edit-menu: "&8Editor &7» Edit Slot %slot%"
+  title-day-selector: "&8Editor &7» Select a Day (1-24)"
+  slot-editor:
+    info-item:
+      name: "&b&lLayout Editor"
+      lore:
+        - "&7Click any slot in the GUI to"
+        - "&7change its type (Day, Filler...)."
+        - " "
+        - "&a» Cʟɪᴄᴋ ᴛᴏ Sᴇᴛ Iᴛᴇᴍ"
+        - "&c» Rɪɢʜᴛ-Cʟɪᴄᴋ ᴛᴏ Cʟᴇᴀʀ Sʟᴏᴛ"
+    back-to-cal-editor: "&c« Back to Calendar Menu"
+  slot-edit-menu:
+    set-day:
+      name: "&a&lSᴇᴛ ᴀs Dᴀʏ"
+      lore:
+        - "&7Assign this slot to a"
+        - "&7calendar day (e.g., Day 1)."
+    set-filler:
+      name: "&8&lSᴇᴛ ᴀs Fɪʟʟᴇʀ Iᴛᴇᴍ"
+      lore:
+        - "&7This item will fill this slot"
+        - "&7if it is not a day."
+    set-static:
+      name: "&e&lSᴇᴛ ᴀs Sᴛᴀᴛɪᴄ Iᴛᴇᴍ"
+      lore:
+        - "&7Assign a specific item (like"
+        - "&7an exit button) to this slot."
+    clear-slot:
+      name: "&c&lCʟᴇᴀʀ Sʟᴏᴛ"
+      lore:
+        - "&7Removes this item from the GUI."

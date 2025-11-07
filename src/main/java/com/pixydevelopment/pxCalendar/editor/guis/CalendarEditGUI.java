@@ -31,7 +31,9 @@ public class CalendarEditGUI extends BaseEditorGUI {
     @Override
     public void open() {
         String title = lang.getMessage("editor.title-edit-calendar").replace("%name%", calendar.getId());
-        createInventory(3, title); // A createInventory metódus automatikusan beállítja a címet
+
+        // JAVÍTÁS: A createInventory-nek a cím (string), nem a lang path kell
+        inventory = Bukit.createInventory(this, 3 * 9, title);
 
         // Edit Layout (Slot 11)
         inventory.setItem(11, new ItemBuilder(Material.CRAFTING_TABLE)
@@ -68,9 +70,8 @@ public class CalendarEditGUI extends BaseEditorGUI {
 
         switch (slot) {
             case 11: // Edit Layout
-                // TODO: Open the main visual slot editor (The big one!)
-                player.sendMessage(ChatUtil.format("&cThe Visual Slot Editor is coming soon!"));
-                player.closeInventory();
+                // JAVÍTVA: Megnyitja a vizuális szerkesztőt
+                new CalendarSlotEditorGUI(plugin, player, calendar).open();
                 break;
             case 13: // Edit Rewards
                 // TODO: Open the reward bundle assignment editor
