@@ -8,6 +8,7 @@ package com.pixydevelopment.pxCalendar.commands.subcommands;
 import com.pixydevelopment.pxCalendar.PxCalendarPlugin;
 import com.pixydevelopment.pxCalendar.commands.CommandBase;
 import com.pixydevelopment.pxCalendar.core.managers.LangManager;
+import org.bukkit.command.CommandSender;
 
 public class ReloadSub implements CommandBase {
 

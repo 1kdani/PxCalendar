@@ -1,5 +1,5 @@
 name: PxCalendar
-version: '1.0.0'
+version: '1.0.2'
 main: com.pixydevelopment.pxCalendar.PxCalendarPlugin
 api-version: '1.16'
 authors: [ Kdani1x ]

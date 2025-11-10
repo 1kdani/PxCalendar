@@ -36,7 +36,10 @@ public class ConfigEditorGUI extends BaseEditorGUI {
 
         // Non-editable info items
         inventory.setItem(10, createDisplayItem(Material.CLOCK, "editor.config-menu.timezone", "%value%", config.getString("calendar.timezone")));
-        inventory.setItem(11, createDisplayItem(Material.CALENDAR, "editor.config-menu.start-date", "%value%", config.getString("calendar.start-date")));
+
+        // JAVÍTÁS: A Material.CALENDAR (ami 1.20.5+ anyag) cserélve Material.MAP-ra (ami 1.16.5-ben létezik)
+        inventory.setItem(11, createDisplayItem(Material.MAP, "editor.config-menu.start-date", "%value%", config.getString("calendar.start-date")));
+
         inventory.setItem(12, createDisplayItem(Material.HOPPER, "editor.config-menu.ip-limit", "%value%", String.valueOf(config.getInt("calendar.ip-claim-limit"))));
 
         // Toggleable boolean items

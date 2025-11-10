@@ -119,7 +119,7 @@ public class CalendarManager {
 
         // We cheat and use LocalDateTime to format this duration
         // We start at an arbitrary "zero" point and add the duration
-        LocalDateTime "durationTime" = LocalDateTime.MIN.plusDays(days).plusHours(hours).plusMinutes(minutes).plusSeconds(seconds);
+        LocalDateTime durationTime = LocalDateTime.MIN.plusDays(days).plusHours(hours).plusMinutes(minutes).plusSeconds(seconds);
 
         try {
             return timeFormatter.format(durationTime);

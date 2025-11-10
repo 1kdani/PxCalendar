@@ -9,6 +9,7 @@ import com.pixydevelopment.pxCalendar.PxCalendarPlugin;
 import com.pixydevelopment.pxCalendar.calendar.RewardFile;
 import com.pixydevelopment.pxCalendar.core.utils.ChatUtil;
 import com.pixydevelopment.pxCalendar.core.utils.ItemBuilder;
+import net.md_5.bungee.api.ChatColor; // JAVÍTÁS: Hozzáadva a hiányzó import
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
@@ -87,7 +88,9 @@ public class RewardFileListGUI extends BaseEditorGUI {
             ItemMeta meta = clickedItem.getItemMeta();
             if (meta == null || !meta.hasDisplayName()) return;
 
-            String fileName = ChatUtil.stripColor(meta.getDisplayName()); // "example1_rewards.yml"
+            // JAVÍTÁS: A 'ChatUtil.stripColor' (ami nem létezik)
+            // cserélve a Bungee 'ChatColor.stripColor'-ra.
+            String fileName = ChatColor.stripColor(meta.getDisplayName()); // "example1_rewards.yml"
             String fileId = fileName.replace(".yml", "");
 
             RewardFile rewardFile = plugin.getRewardManager().getRewardFile(fileId);

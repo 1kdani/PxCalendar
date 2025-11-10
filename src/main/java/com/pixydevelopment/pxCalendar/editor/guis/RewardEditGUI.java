@@ -88,7 +88,10 @@ public class RewardEditGUI extends BaseEditorGUI {
             ItemMeta meta = item.getItemMeta();
             List<String> lore = meta.hasLore() ? meta.getLore() : new ArrayList<>();
             lore.add(" ");
-            lore.addAll(lang.getLangConfig().getStringList("editor.reward-editor.item-item.lore"));
+            // KIEGÉSZÍTVE: Biztonsági ellenőrzés, hogy a lore ne legyen null
+            if (lang.getLangConfig().getStringList("editor.reward-editor.item-item.lore") != null) {
+                lore.addAll(lang.getLangConfig().getStringList("editor.reward-editor.item-item.lore"));
+            }
             meta.setLore(lore);
             item.setItemMeta(meta);
 
@@ -103,6 +106,7 @@ public class RewardEditGUI extends BaseEditorGUI {
     public void handleClick(InventoryClickEvent event) {
         int slot = event.getSlot();
         ClickType click = event.getClick();
+        RewardConfigSaver saver = new RewardConfigSaver(plugin, rewardFile, bundle);
 
         switch (slot) {
             case 48: // Back
@@ -111,9 +115,16 @@ public class RewardEditGUI extends BaseEditorGUI {
             case 49: // Add Command
                 plugin.getEditorSessionManager().startRewardAddCommandSession(player, rewardFile, bundle);
                 return;
-            case 50: // Add Item
-                // TODO: Open the Item Add GUI
-                lang.sendMessage(player, "&cItem adding is coming in the next step!");
+            case 50: // KIEGÉSZÍTVE: Add Item
+                ItemStack itemOnCursor = player.getItemOnCursor();
+                if (itemOnCursor == null || itemOnCursor.getType() == Material.AIR) {
+                    lang.sendMessage(player, "&cFogj meg egy tárgyat a kurzoroddal, és úgy kattints ide a hozzáadáshoz!");
+                    return;
+                }
+                saver.addItem(itemOnCursor.clone()); // Elmentjük a tárgyat
+                player.setItemOnCursor(null); // Töröljük a kurzorról
+                player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1f, 2f);
+                refreshGUI(); // Frissítjük a GUI-t
                 return;
         }
 
@@ -121,15 +132,41 @@ public class RewardEditGUI extends BaseEditorGUI {
         if (slot >= 1 && slot <= 17 && event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.PAPER) {
             if (click == ClickType.RIGHT) {
                 int index = (commandPage * 17) + (slot - 1);
-                RewardConfigSaver saver = new RewardConfigSaver(plugin, rewardFile, bundle);
                 saver.removeCommand(index);
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1f, 0.5f);
-                // Refresh
-                new RewardEditGUI(plugin, player, plugin.getRewardManager().getRewardFile(rewardFile.getFileId()), plugin.getRewardManager().getBundle(bundle.getId())).open();
+                refreshGUI(); // Frissítés
             }
             return;
         }
 
-        // TODO: Add logic for clicking on items (Slots 19-35)
+        // KIEGÉSZÍTVE: Clicked on an item (Slots 19-35)
+        if (slot >= 19 && slot <= 35 && event.getCurrentItem() != null && event.getCurrentItem().getType() != Material.GRAY_STAINED_GLASS_PANE) {
+            if (click == ClickType.RIGHT) {
+                int index = (itemPage * 17) + (slot - 19);
+                saver.removeItem(index); // Tárgy eltávolítása
+                player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1f, 0.5f);
+                refreshGUI(); // Frissítés
+            }
+            return;
+        }
+    }
+
+    /**
+     * Helper metódus a GUI frissítésére a mentett adatokkal.
+     */
+    private void refreshGUI() {
+        // Újra kell tölteni a RewardFile-t és a Bundle-t, mert a ConfigSaver frissítette őket
+        RewardFile freshFile = plugin.getRewardManager().getRewardFile(rewardFile.getFileId());
+        if (freshFile == null) {
+            player.closeInventory();
+            return;
+        }
+        RewardBundle freshBundle = freshFile.getBundle(bundle.getId());
+        if (freshBundle == null) {
+            player.closeInventory();
+            return;
+        }
+
+        new RewardEditGUI(plugin, player, freshFile, freshBundle).open();
     }
 }

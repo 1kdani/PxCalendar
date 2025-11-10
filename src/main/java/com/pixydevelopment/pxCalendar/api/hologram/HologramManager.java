@@ -183,9 +183,15 @@ public class HologramManager {
             updateTask.cancel();
         }
         if (hologramService != null) {
-            hologramService.deleteAll();
+            // JAVÍTÁS: Ne a service-t kérjük meg az összes törlésére,
+            // hanem mi magunk töröljük azokat, amiket az 'activeCalendars' listánkban tárolunk.
+            for (String hologramId : activeCalendars.keySet()) {
+                hologramService.deleteHologram(hologramId);
+            }
             hologramService.shutdown();
         }
+        // Ürítsük ki a saját listánkat is
+        activeCalendars.clear();
     }
 
     // --- HELPER METHODS FOR COMMANDS/LISTENERS ---

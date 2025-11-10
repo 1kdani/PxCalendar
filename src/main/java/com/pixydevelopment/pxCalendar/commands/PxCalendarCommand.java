@@ -3,11 +3,11 @@
  #                             PIXY-DEVELOPMENT                                 #
  ################################################################################
 */
-package com.pixydevelopment.pxCalendar.commands;
+package com.pixydevelopment.pxCalendar.commands; // A HELYES CSOMAG
 
 import com.pixydevelopment.pxCalendar.PxCalendarPlugin;
 import com.pixydevelopment.pxCalendar.commands.subcommands.*;
-import com.pixydevelopment.pxCalendar.commands.subcommands.PcolSub;
+import com.pixydevelopment.pxCalendar.commands.subcommands.PcalSub;
 import com.pixydevelopment.pxCalendar.core.managers.LangManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -24,23 +24,24 @@ import java.util.Map;
  * Main command handler for /pxcalendar.
  * Delegates tasks to sub-command classes.
  */
-public class PxCalendarCommand implements CommandExecutor, TabCompleter {
+public class PxCalendarCommand implements CommandExecutor, TabCompleter { // A HELYES NÉV
 
-    private final PxCalendarPlugin plugin;
+    private final PxCalendarPlugin plugin; // Ez a fő plugin osztályra mutat
     private final LangManager lang;
     private final Map<String, CommandBase> subCommands = new HashMap<>();
     private final Map<String, String> aliasMap = new HashMap<>();
 
+    // A konstruktor a FŐ PxCalendarPlugin-t várja
     public PxCalendarCommand(PxCalendarPlugin plugin) {
         this.plugin = plugin;
-        this.lang = plugin.getLangManager();
+        this.lang = plugin.getLangManager(); // Így már megtalálja
 
         // Register sub-commands
         registerSubCommand("help", new HelpSub(plugin));
         registerSubCommand("open", new OpenSub(plugin));
         registerSubCommand("reload", new ReloadSub(plugin));
         registerSubCommand("reset", new ResetSub(plugin));
-        registerSubCommand("pcal", new PcolSub(plugin));
+        registerSubCommand("pcal", new PcalSub(plugin));
         registerSubCommand("editor", new EditorSub(plugin));
 
         loadAliases();
@@ -50,17 +51,12 @@ public class PxCalendarCommand implements CommandExecutor, TabCompleter {
         subCommands.put(name.toLowerCase(), command);
     }
 
-    /**
-     * Loads aliases from the config.yml (e.g., "rl" -> "reload")
-     */
     private void loadAliases() {
-        FileConfiguration config = plugin.getConfigManager().getConfig();
+        FileConfiguration config = plugin.getConfigManager().getConfig(); // Ez is a fő osztályt használja
         if (!config.contains("aliases")) return;
 
         for (String subCommand : config.getConfigurationSection("aliases").getKeys(false)) {
             String alias = config.getString("aliases." + subCommand);
-            // Map the alias to the main command name
-            // e.g., aliasMap.put("rl", "reload");
             aliasMap.put(alias.toLowerCase(), subCommand.toLowerCase());
         }
     }
@@ -68,32 +64,25 @@ public class PxCalendarCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 0) {
-            // No args, show default calendar or help
-            // We'll make it show help by default
             getCommand("help").execute(sender, args);
             return true;
         }
 
         String subCommandName = args[0].toLowerCase();
-
-        // Check if the input is an alias, if so, get the real command name
         subCommandName = aliasMap.getOrDefault(subCommandName, subCommandName);
 
         CommandBase subCommand = getCommand(subCommandName);
 
         if (subCommand == null) {
-            // Invalid command
-            lang.sendMessage(sender, "messages.invalid-command"); // Add this to lang.yml
+            lang.sendMessage(sender, "messages.invalid-command");
             return true;
         }
 
-        // Check permission
         if (subCommand.getPermission() != null && !sender.hasPermission(subCommand.getPermission())) {
             lang.sendMessage(sender, "messages.no-permission");
             return true;
         }
 
-        // Execute the sub-command
         subCommand.execute(sender, args);
         return true;
     }
@@ -102,13 +91,11 @@ public class PxCalendarCommand implements CommandExecutor, TabCompleter {
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (args.length == 1) {
             List<String> completions = new ArrayList<>();
-            // Add commands
             for (String cmdName : subCommands.keySet()) {
                 if (cmdName.startsWith(args[0].toLowerCase())) {
                     completions.add(cmdName);
                 }
             }
-            // Add aliases
             for (String aliasName : aliasMap.keySet()) {
                 if (aliasName.startsWith(args[0].toLowerCase())) {
                     completions.add(aliasName);
@@ -116,8 +103,6 @@ public class PxCalendarCommand implements CommandExecutor, TabCompleter {
             }
             return completions;
         }
-
-        // TODO: Add tab completion for sub-commands (e.g., /pxc open <calendar_id>)
         return null;
     }
 

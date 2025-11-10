@@ -13,6 +13,7 @@
 package com.pixydevelopment.pxCalendar.core.managers;
 
 import com.pixydevelopment.pxCalendar.core.utils.ChatUtil;
+import org.bukkit.command.CommandSender; // KIEGÉSZÍTVE
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -117,6 +118,36 @@ public class LangManager {
         }
         return message;
     }
+
+    // --- KIEGÉSZÍTVE: HIÁNYZÓ METÓDUSOK ---
+
+    /**
+     * Gets a message and sends it to the player/console.
+     * @param sender The receiver
+     * @param path The path in the lang file
+     */
+    public void sendMessage(CommandSender sender, String path) {
+        sender.sendMessage(getMessage(path));
+    }
+
+    /**
+     * Gets a message with placeholders and sends it to the player/console.
+     * @param sender The receiver
+     * @param path The path in the lang file
+     * @param replacements Placeholders (e.g., "%player%", player.getName())
+     */
+    public void sendMessage(CommandSender sender, String path, String... replacements) {
+        sender.sendMessage(getMessage(path, replacements));
+    }
+
+    /**
+     * KIEGÉSZÍTVE: Getter a Lang Config-hoz (HelpSub használja)
+     */
+    public FileConfiguration getLangConfig() {
+        return this.langConfig;
+    }
+
+    // --- VÉGE A KIEGÉSZÍTÉSNEK ---
 
     /**
      * Reloads the config and language files.

@@ -8,6 +8,7 @@ package com.pixydevelopment.pxCalendar.managers;
 import com.pixydevelopment.pxCalendar.PxCalendarPlugin;
 import com.pixydevelopment.pxCalendar.calendar.Calendar;
 import com.pixydevelopment.pxCalendar.calendar.PlayerCalendarData;
+import com.pixydevelopment.pxCalendar.gui.GUIManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -64,7 +65,8 @@ public class ReminderManager {
                     continue;
                 }
 
-                unclaimedCount += calendar.getUnclaimedRewardCount(player);
+                // JAVÍTVA: A nem létező 'getUnclaimedRewardCount' helyett a 'getAvailableUnclaimedCount' használata
+                unclaimedCount += calendar.getAvailableUnclaimedCount(player);
             }
 
             if (unclaimedCount > 0) {

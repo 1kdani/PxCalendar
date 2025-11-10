@@ -8,6 +8,7 @@ package com.pixydevelopment.pxCalendar.editor.guis;
 import com.pixydevelopment.pxCalendar.PxCalendarPlugin;
 import com.pixydevelopment.pxCalendar.calendar.Calendar;
 import com.pixydevelopment.pxCalendar.core.utils.ItemBuilder;
+import net.md_5.bungee.api.ChatColor; // JAVÍTÁS: Hozzáadva a hiányzó import
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
@@ -98,7 +99,9 @@ public class CalendarListGUI extends BaseEditorGUI {
             ItemMeta meta = clickedItem.getItemMeta();
             if (meta == null || !meta.hasLore()) return;
 
-            String fileNameLine = ChatUtil.stripColor(meta.getLore().get(0)); // "File: example1.yml"
+            // JAVÍTÁS: A 'ChatUtil.stripColor' (ami nem létezik)
+            // cserélve a Bungee 'ChatColor.stripColor'-ra.
+            String fileNameLine = ChatColor.stripColor(meta.getLore().get(0)); // "File: example1.yml"
             String calendarId = fileNameLine.replace("File: ", "").replace(".yml", "");
 
             Calendar calendar = plugin.getGuiManager().getCalendar(calendarId);

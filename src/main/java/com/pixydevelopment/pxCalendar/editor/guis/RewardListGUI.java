@@ -10,6 +10,7 @@ import com.pixydevelopment.pxCalendar.calendar.RewardBundle;
 import com.pixydevelopment.pxCalendar.calendar.RewardFile;
 import com.pixydevelopment.pxCalendar.core.utils.ChatUtil;
 import com.pixydevelopment.pxCalendar.core.utils.ItemBuilder;
+import net.md_5.bungee.api.ChatColor; // JAVÍTÁS: Hozzáadva a hiányzó import
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -45,7 +46,8 @@ public class RewardListGUI extends BaseEditorGUI {
             if (i >= 45) break;
             RewardBundle bundle = bundles.get(i);
 
-            ItemStack item = new ItemBuilder(Material.GIFT_LOOT_TABLE)
+            // JAVÍTÁS: Material.GIFT_LOOT_TABLE (1.20.5+) cserélve Material.CHEST-re (1.16.5)
+            ItemStack item = new ItemBuilder(Material.CHEST)
                     .name(lang.getMessage("editor.reward-list.reward-bundle-item.name")
                             .replace("%bundle_id%", bundle.getId()))
                     .lore(lang.getLangConfig().getStringList("editor.reward-list.reward-bundle-item.lore").stream()
@@ -91,11 +93,14 @@ public class RewardListGUI extends BaseEditorGUI {
             return;
         }
 
-        if (clickedItem.getType() == Material.GIFT_LOOT_TABLE) {
+        // JAVÍTÁS: Material.GIFT_LOOT_TABLE cserélve Material.CHEST-re
+        if (clickedItem.getType() == Material.CHEST) {
             ItemMeta meta = clickedItem.getItemMeta();
             if (meta == null || !meta.hasDisplayName()) return;
 
-            String bundleId = ChatUtil.stripColor(meta.getDisplayName()); // "day-1"
+            // JAVÍTÁS: A 'ChatUtil.stripColor' (ami nem létezik)
+            // cserélve a Bungee 'ChatColor.stripColor'-ra.
+            String bundleId = ChatColor.stripColor(meta.getDisplayName()); // "day-1"
             RewardBundle bundle = rewardFile.getBundle(bundleId);
 
             if (bundle == null) {

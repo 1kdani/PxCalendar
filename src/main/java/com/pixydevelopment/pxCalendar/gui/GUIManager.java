@@ -8,6 +8,7 @@ package com.pixydevelopment.pxCalendar.gui;
 import com.pixydevelopment.pxCalendar.PxCalendarPlugin;
 import com.pixydevelopment.pxCalendar.calendar.Calendar;
 import com.pixydevelopment.pxCalendar.calendar.PlayerCalendarData; // ÚJ IMPORT
+import com.pixydevelopment.pxCalendar.core.utils.ChatUtil; // JAVÍTÁS: Importálva
 import com.pixydevelopment.pxCalendar.managers.DataManager;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -89,12 +90,14 @@ public class GUIManager {
     public void openCalendar(Player player, String calendarId) {
         Calendar calendar = getCalendar(calendarId);
         if (calendar == null) {
+            // JAVÍTÁS: Ez most már működni fog, mert a LangManager ki lett egészítve
             plugin.getLangManager().sendMessage(player, "messages.calendar-not-found", "%id%", calendarId);
             return;
         }
 
         // Check permission
         if (!player.hasPermission(calendar.getPermission())) {
+            // JAVÍTÁS: Ez is működni fog
             plugin.getLangManager().sendMessage(player, "messages.no-permission");
             return;
         }
@@ -102,8 +105,8 @@ public class GUIManager {
         // Get the player's data
         PlayerCalendarData playerData = dataManager.getPlayerData(player);
         if (playerData == null) {
-            // This can happen if the player just logged in and data hasn't loaded
-            plugin.getLangManager().sendMessage(player, "&cYour data is still loading, please wait a moment and try again.");
+            // JAVÍTÁS: Nyers szöveg küldése ChatUtil-lal, ne a LangManagerrel
+            ChatUtil.sendMessage(player, "&cYour data is still loading, please wait a moment and try again.");
             return;
         }
 
