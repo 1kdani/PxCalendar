@@ -7,6 +7,7 @@ package com.pixydevelopment.pxCalendar.editor.sessions;
 
 import com.pixydevelopment.pxCalendar.PxCalendarPlugin;
 import com.pixydevelopment.pxCalendar.core.managers.LangManager;
+import com.pixydevelopment.pxCalendar.editor.guis.CalendarEditGUI;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -78,7 +79,7 @@ public class CalendarCreateSession {
         // Reload GUIs to load the new file, then open the editor for it
         plugin.getGuiManager().loadGUIs();
 
-        // TODO: Open the CalendarEditGUI for this new calendar
-        // new CalendarEditGUI(plugin, player, plugin.getGuiManager().getCalendar(calendarId)).open();
+        // JAVÍTVA: Megnyitja az új naptár szerkesztőjét
+        new CalendarEditGUI(plugin, player, plugin.getGuiManager().getCalendar(calendarId)).open();
     }
 }

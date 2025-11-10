@@ -7,13 +7,13 @@ package com.pixydevelopment.pxCalendar.editor.guis;
 
 import com.pixydevelopment.pxCalendar.PxCalendarPlugin;
 import com.pixydevelopment.pxCalendar.calendar.Calendar;
-import com.pixydevelopment.pxCalendar.editor.ConfigSaver; // ÚJ IMPORT
 import com.pixydevelopment.pxCalendar.core.utils.ItemBuilder;
+import com.pixydevelopment.pxCalendar.editor.ConfigSaver;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.Sound; // ÚJ IMPORT
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.ItemStack;
 
 /**
  * This menu opens when an admin clicks a slot in the CalendarSlotEditorGUI.
@@ -33,29 +33,33 @@ public class SlotEditMenu extends BaseEditorGUI {
     @Override
     public void open() {
         String title = lang.getMessage("editor.title-slot-edit-menu").replace("%slot%", String.valueOf(editingSlot));
-        // JAVÍTÁS: A BaseEditorGUI createInventory metódusa lang path-t vár
-        createInventory(3, "editor.title-slot-edit-menu-placeholder"); // Ideiglenes
-
-        // JAVÍTÁS: Manuálisan állítjuk a címet, hogy a placeholder működjön
         inventory = Bukkit.createInventory(this, 3 * 9, title);
 
-        // ... (a többi item beállítása változatlan) ...
+        // Set as Day (Slot 10)
         inventory.setItem(10, new ItemBuilder(Material.GREEN_WOOL)
                 .name(lang.getMessage("editor.slot-edit-menu.set-day.name"))
                 .lore(lang.getLangConfig().getStringList("editor.slot-edit-menu.set-day.lore"))
                 .build());
+
+        // Set as Filler (Slot 12)
         inventory.setItem(12, new ItemBuilder(Material.GRAY_DYE)
                 .name(lang.getMessage("editor.slot-edit-menu.set-filler.name"))
                 .lore(lang.getLangConfig().getStringList("editor.slot-edit-menu.set-filler.lore"))
                 .build());
+
+        // Set as Static Item (Slot 14)
         inventory.setItem(14, new ItemBuilder(Material.WRITABLE_BOOK)
                 .name(lang.getMessage("editor.slot-edit-menu.set-static.name"))
                 .lore(lang.getLangConfig().getStringList("editor.slot-edit-menu.set-static.lore"))
                 .build());
+
+        // Clear Slot (Slot 16)
         inventory.setItem(16, new ItemBuilder(Material.BARRIER)
                 .name(lang.getMessage("editor.slot-edit-menu.clear-slot.name"))
                 .lore(lang.getLangConfig().getStringList("editor.slot-edit-menu.clear-slot.lore"))
                 .build());
+
+        // Back Button (Slot 22)
         inventory.setItem(22, new ItemBuilder(Material.ARROW)
                 .name(lang.getMessage("editor.slot-editor.back-to-cal-editor"))
                 .build());
@@ -67,13 +71,13 @@ public class SlotEditMenu extends BaseEditorGUI {
     @Override
     public void handleClick(InventoryClickEvent event) {
         int slot = event.getSlot();
-        ConfigSaver saver = new ConfigSaver(plugin, calendar); // ÚJ
+        ConfigSaver saver = new ConfigSaver(plugin, calendar);
 
         switch (slot) {
             case 10: // Set as Day
-                // JAVÍTVA: Megnyitja a DaySelectorGUI-t
+                // Open the Day Selector
                 new DaySelectorGUI(plugin, player, calendar, editingSlot).open();
-                return; // Nem kell refreshelni ezt a menüt
+                return; // Don't refresh this menu
 
             case 12: // Set as Filler
                 saver.setSlotAsFiller(editingSlot);
@@ -82,10 +86,10 @@ public class SlotEditMenu extends BaseEditorGUI {
             case 14: // Set as Static
                 // TODO: This needs a chat session to ask for the item ID (e.g., 'exit-button')
                 lang.sendMessage(player, "&cSetting static items is coming soon!");
-                return; // Ne zárja be a menüt
+                return; // Don't close
 
             case 16: // Clear Slot
-                saver.clearSlot(editingSlot);
+                saver.clearSlot(editingSlot, true);
                 break;
 
             case 22: // Back
@@ -96,7 +100,7 @@ public class SlotEditMenu extends BaseEditorGUI {
                 return;
         }
 
-        // Visszalépés a fő slot szerkesztőbe a változtatás után
+        // Go back to the main slot editor after a choice (except "Set as Day")
         player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1f, 2f);
         new CalendarSlotEditorGUI(plugin, player, plugin.getGuiManager().getCalendar(calendar.getId())).open();
     }

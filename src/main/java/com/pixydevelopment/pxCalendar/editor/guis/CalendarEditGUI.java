@@ -10,6 +10,7 @@ import com.pixydevelopment.pxCalendar.calendar.Calendar;
 import com.pixydevelopment.pxCalendar.calendar.RewardFile;
 import com.pixydevelopment.pxCalendar.core.utils.ChatUtil;
 import com.pixydevelopment.pxCalendar.core.utils.ItemBuilder;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -33,30 +34,27 @@ public class CalendarEditGUI extends BaseEditorGUI {
     public void open() {
         String title = lang.getMessage("editor.title-edit-calendar").replace("%name%", calendar.getId());
 
-        // JAVÍTÁS: A createInventory-nek a cím (string), nem a lang path kell
-        inventory = Bukit.createInventory(this, 3 * 9, title);
+        // JAVÍTÁS: A BaseEditorGUI createInventory metódusa lang path-t vár
+        // De nekünk dinamikus cím kell, ezért felülírjuk
+        inventory = Bukkit.createInventory(this, 3 * 9, title);
 
+        // ... (inventory.setItem hívások változatlanok) ...
         // Edit Layout (Slot 11)
         inventory.setItem(11, new ItemBuilder(Material.CRAFTING_TABLE)
                 .name(lang.getMessage("editor.calendar-edit.edit-slots.name"))
                 .lore(lang.getLangConfig().getStringList("editor.calendar-edit.edit-slots.lore"))
                 .build());
-
-        // Edit Rewards (Slot 13)
+        // ... (többi item) ...
         inventory.setItem(13, new ItemBuilder(Material.DIAMOND)
                 .name(lang.getMessage("editor.calendar-edit.edit-rewards.name"))
                 .lore(lang.getLangConfig().getStringList("editor.calendar-edit.edit-rewards.lore"))
                 .build());
-
-        // Delete (Slot 15)
         inventory.setItem(15, new ItemBuilder(Material.TNT)
                 .name(lang.getMessage("editor.calendar-edit.delete.name"))
                 .lore(lang.getLangConfig().getStringList("editor.calendar-edit.delete.lore").stream()
                         .map(l -> l.replace("%file_name%", calendar.getId() + ".yml"))
                         .collect(Collectors.toList()))
                 .build());
-
-        // Back Button (Slot 22)
         inventory.setItem(22, new ItemBuilder(Material.BARRIER)
                 .name(lang.getMessage("editor.back-button"))
                 .build());
@@ -71,6 +69,7 @@ public class CalendarEditGUI extends BaseEditorGUI {
 
         switch (slot) {
             case 11: // Edit Layout
+                // JAVÍTVA: Megnyitja a vizuális szerkesztőt
                 new CalendarSlotEditorGUI(plugin, player, calendar).open();
                 break;
             case 13: // Edit Rewards

@@ -66,7 +66,7 @@ public class DaySelectorGUI extends BaseEditorGUI {
 
         // Back button
         inventory.setItem(40, new ItemBuilder(Material.ARROW)
-                .name(lang.getMessage("editor.slot-editor.back-to-cal-editor"))
+                .name(lang.getMessage("editor.slot-editor.back-to-cal-editor")) // Re-using this string
                 .build());
 
         player.openInventory(getInventory());
@@ -77,7 +77,8 @@ public class DaySelectorGUI extends BaseEditorGUI {
         int clickedSlot = event.getSlot();
 
         if (clickedSlot == 40) { // Back button
-            new CalendarSlotEditorGUI(plugin, player, calendar).open();
+            // Go back to the Slot Edit Menu
+            new SlotEditMenu(plugin, player, calendar, editingSlot).open();
             return;
         }
 

@@ -7,6 +7,7 @@ package com.pixydevelopment.pxCalendar.editor;
 
 import com.pixydevelopment.pxCalendar.PxCalendarPlugin;
 import com.pixydevelopment.pxCalendar.calendar.Calendar;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -38,7 +39,7 @@ public class ConfigSaver {
      */
     public void setSlotAsDay(int slot, int day) {
         // 1. Remove this slot from any other definitions
-        clearSlot(slot);
+        clearSlot(slot, false); // Don't save yet
 
         // 2. Set the new day definition
         String path = "days." + day;
@@ -60,12 +61,9 @@ public class ConfigSaver {
      * @param slot The slot to set
      */
     public void setSlotAsFiller(int slot) {
-        clearSlot(slot);
+        clearSlot(slot, false); // Don't save yet
 
         // Add this slot to the 'filler-pane.slots' list
-        // Note: This logic is simplified. A real implementation should handle
-        // existing 'slot' vs 'slots' keys for all static items.
-        // For now, we assume 'filler-pane' uses 'slots'.
         String path = "items.filler-pane.slots";
         List<Integer> slots = config.getIntegerList(path);
         if (!slots.contains(slot)) {
@@ -79,19 +77,24 @@ public class ConfigSaver {
     /**
      * Completely clears a slot, removing it from 'days' and 'items'.
      * @param slot The slot to clear
+     * @param autoSave Whether to save immediately
      */
-    public void clearSlot(int slot) {
+    public void clearSlot(int slot, boolean autoSave) {
         // 1. Check 'days'
-        for (String dayKey : config.getConfigurationSection("days").getKeys(false)) {
-            if (config.getInt("days." + dayKey + ".slot") == slot) {
-                config.set("days." + dayKey, null); // Remove the day assignment
-                break;
+        ConfigurationSection daysSection = config.getConfigurationSection("days");
+        if (daysSection != null) {
+            for (String dayKey : daysSection.getKeys(false)) {
+                if (config.getInt("days." + dayKey + ".slot") == slot) {
+                    config.set("days." + dayKey, null); // Remove the day definition
+                    break;
+                }
             }
         }
 
         // 2. Check 'items' (static items and fillers)
-        if (config.getConfigurationSection("items") != null) {
-            for (String itemKey : config.getConfigurationSection("items").getKeys(false)) {
+        ConfigurationSection itemsSection = config.getConfigurationSection("items");
+        if (itemsSection != null) {
+            for (String itemKey : itemsSection.getKeys(false)) {
                 String path = "items." + itemKey;
                 if (config.getInt(path + ".slot", -1) == slot) {
                     config.set(path, null); // Remove static item
@@ -104,7 +107,9 @@ public class ConfigSaver {
             }
         }
 
-        save();
+        if (autoSave) {
+            save();
+        }
     }
 
     /**

@@ -7,13 +7,17 @@ package com.pixydevelopment.pxCalendar.editor.guis;
 
 import com.pixydevelopment.pxCalendar.PxCalendarPlugin;
 import com.pixydevelopment.pxCalendar.calendar.Calendar;
+import com.pixydevelopment.pxCalendar.calendar.CalendarDay;
 import com.pixydevelopment.pxCalendar.core.utils.ChatUtil;
 import com.pixydevelopment.pxCalendar.core.utils.ItemBuilder;
+import com.pixydevelopment.pxCalendar.editor.ConfigSaver;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Map;
 
@@ -33,11 +37,12 @@ public class CalendarSlotEditorGUI extends BaseEditorGUI {
     @Override
     public void open() {
         String title = lang.getMessage("editor.title-slot-editor").replace("%name%", calendar.getId());
-        // We create an inventory one size larger to hold the navigation bar
+
         int guiRows = calendar.getRows();
         int editorRows = Math.min(6, guiRows + 1); // Max 6 rows
 
-        createInventory(editorRows, title); // A BaseEditorGUI automatikusan beállítja a címet
+        // Use the title string directly
+        inventory = Bukkit.createInventory(this, editorRows * 9, title);
 
         // 1. Replicate the calendar GUI exactly
         // Fill static items (fillers)
@@ -48,13 +53,16 @@ public class CalendarSlotEditorGUI extends BaseEditorGUI {
 
         // Fill day items
         for (Map.Entry<Integer, CalendarDay> entry : calendar.getDaysBySlot().entrySet()) {
-            if (entry.getKey() >= inventory.getSize()) continue;
+            int slot = entry.getKey();
+            CalendarDay day = entry.getValue();
+            if (slot >= inventory.getSize()) continue;
+
             // In the editor, we *always* show the "locked" item as the placeholder
-            ItemStack displayItem = entry.getValue().getLockedItem();
+            ItemStack displayItem = day.getLockedItem();
             ItemMeta meta = displayItem.getItemMeta();
-            meta.setDisplayName(ChatUtil.format("&a&l[Day " + entry.getValue().getDay() + "]"));
+            meta.setDisplayName(ChatUtil.format("&a&l[Day " + day.getDay() + "]"));
             displayItem.setItemMeta(meta);
-            inventory.setItem(entry.getKey(), displayItem);
+            inventory.setItem(slot, displayItem);
         }
 
         // 2. Add the editor navigation bar (last row)
@@ -63,7 +71,9 @@ public class CalendarSlotEditorGUI extends BaseEditorGUI {
         // Fill empty nav slots with a different filler
         ItemStack navFiller = new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).name(" ").build();
         for (int i = navBarStartSlot; i < inventory.getSize(); i++) {
-            inventory.setItem(i, navFiller);
+            if (inventory.getItem(i) == null) {
+                inventory.setItem(i, navFiller);
+            }
         }
 
         // Add info item
@@ -83,7 +93,7 @@ public class CalendarSlotEditorGUI extends BaseEditorGUI {
     @Override
     public void handleClick(InventoryClickEvent event) {
         int slot = event.getSlot();
-        int navBarStartSlot = (calendar.getRows()) * 9;
+        int navBarStartSlot = (inventory.getSize() / 9 - 1) * 9;
 
         // Check if clicking navigation bar
         if (slot >= navBarStartSlot) {
@@ -96,9 +106,13 @@ public class CalendarSlotEditorGUI extends BaseEditorGUI {
         // Clicked inside the actual GUI area
         if (event.getClick() == ClickType.RIGHT) {
             // Clear slot
-            // TODO: Add logic to remove this slot from the guis/calendar.yml file
-            player.sendMessage(ChatUtil.format("&cDEBUG: Right-clicked slot " + slot + " (Clear)"));
-        } else {
+            ConfigSaver saver = new ConfigSaver(plugin, calendar);
+            saver.clearSlot(slot, true); // Save immediately
+
+            // Refresh GUI
+            new CalendarSlotEditorGUI(plugin, player, plugin.getGuiManager().getCalendar(calendar.getId())).open();
+
+        } else if (event.getClick() == ClickType.LEFT) {
             // Open the Slot Edit Menu
             new SlotEditMenu(plugin, player, calendar, slot).open();
         }
