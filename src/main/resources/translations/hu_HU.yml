@@ -282,3 +282,33 @@ editor:
     - " "
   prompt-reward-file-exists: "%plugin-prefix%&cMár létezik jutalom fájl '&e%id%&c' azonosítóval."
   prompt-reward-file-created: "%plugin-prefix%&aSikeresen létrehoztad a(z) '&e%id%&a' jutalom fájlt."
+  title-reward-editor: "&8Szerkesztő &7» Jutalom (%bundle%)"
+  reward-editor:
+    add-command:
+      name: "&a&lPᴀʀᴀɴᴄs Hᴏᴢᴢáᴀᴅásᴀ"
+      lore:
+        - "&7Aᴅᴊ ᴇɢʏ úᴊ ᴘᴀʀᴀɴᴄsᴏᴛ"
+        - "&7ᴇʜʜᴇᴢ ᴀ ᴊᴜᴛᴀʟᴏᴍ ᴄsᴏᴍᴀɢʜᴏᴢ."
+        - "&7(Hᴀsᴢɴáʟᴅ: %player_name%)"
+    add-item:
+      name: "&b&lTáʀɢʏ Hᴏᴢᴢáᴀᴅásᴀ"
+      lore:
+        - "&7Mᴇɢɴʏɪᴛ ᴇɢʏ ᴍᴇɴüᴛ, ᴀʜᴏᴠᴀ"
+        - "&7ʙᴇᴅᴏʙʜᴀᴛᴏᴅ ᴀ ʜᴏᴢᴢáᴀᴅɴɪ ᴋíᴠáɴᴛ ᴛáʀɢʏᴀᴛ."
+    current-commands: "&e&lJᴇʟᴇɴʟᴇɢɪ Pᴀʀᴀɴᴄsᴏᴋ"
+    current-items: "&e&lJᴇʟᴇɴʟᴇɢɪ Táʀɢʏᴀᴋ"
+    command-item:
+      name: "&f%command%"
+      lore:
+        - "&c» Jᴏʙʙ-Kᴀᴛᴛɪɴᴛs ᴀ Töʀʟésʜᴇᴢ"
+    item-item:
+      lore:
+        - "&c» Jᴏʙʙ-Kᴀᴛᴛɪɴᴛs ᴀ Töʀʟésʜᴇᴢ"
+  # Chat prompts for rewards
+  prompt-reward-command:
+    - " "
+    - "%plugin-prefix%&eÍrd be a hozzáadandó parancsot a chat-be."
+    - "&7(Hᴀsᴢɴáʟᴅ: &f%player_name%&7. Nᴇ íʀᴊ /-jelet ᴀᴢ ᴇʟé M)"
+    - "&7Írd be: 'cancel' a megszakításhoz."
+    - " "
+  prompt-command-added: "%plugin-prefix%&aParancs sikeresen hozzáadva."

@@ -281,3 +281,33 @@ editor:
     - " "
   prompt-reward-file-exists: "%plugin-prefix%&cA reward file with ID '&e%id%&c' already exists."
   prompt-reward-file-created: "%plugin-prefix%&aSuccessfully created reward file '&e%id%&a'."
+  title-reward-editor: "&8Editor &7» Reward (%bundle%)"
+  reward-editor:
+    add-command:
+      name: "&a&lAᴅᴅ Cᴏᴍᴍᴀɴᴅ"
+      lore:
+        - "&7Aᴅᴅ ᴀ ɴᴇᴡ ᴄᴏᴍᴍᴀɴᴅ ᴛᴏ"
+        - "&7ᴛʜɪs ʀᴇᴡᴀᴅ ʙᴜɴᴅʟᴇ."
+        - "&7(U_sᴇ %player_name%)"
+    add-item:
+      name: "&b&lAᴅᴅ Iᴛᴇᴍ"
+      lore:
+        - "&7Oᴘᴇɴs ᴀɴ ɪɴᴠᴇɴᴛᴏʀʏ ᴡʜᴇʀᴇ ʏᴏᴜ"
+        - "&7ᴄᴀɴ ᴅʀᴏᴘ ᴀɴ ɪᴛᴇᴍ ᴛᴏ ᴀᴅᴅ ɪᴛ."
+    current-commands: "&e&lCᴜʀʀᴇɴᴛ Cᴏᴍᴍᴀɴᴅs"
+    current-items: "&e&lCᴜʀʀᴇɴᴛ Iᴛᴇᴍs"
+    command-item:
+      name: "&f%command%"
+      lore:
+        - "&c» Rɪɢʜᴛ-Cʟɪᴄᴋ ᴛᴏ Dᴇʟᴇᴛᴇ"
+    item-item:
+      lore:
+        - "&c» Rɪɢʜᴛ-Cʟɪᴄᴋ ᴛᴏ Dᴇʟᴇᴛᴇ"
+  # Chat prompts for rewards
+  prompt-reward-command:
+    - " "
+    - "%plugin-prefix%&ePlease type the command to add."
+    - "&7(U_sᴇ &f%player_name%&7 ꜰᴏʀ ᴛʜᴇ ᴘʟᴀʏᴇʀ. Dᴏ ɴᴏᴛ ɪɴᴄʟᴜᴅᴇ ᴛʜᴇ /)"
+    - "&7Type 'cancel' to exit."
+    - " "
+  prompt-command-added: "%plugin-prefix%&aCommand added successfully."

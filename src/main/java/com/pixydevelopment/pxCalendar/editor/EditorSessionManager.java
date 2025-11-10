@@ -6,8 +6,11 @@
 package com.pixydevelopment.pxCalendar.editor;
 
 import com.pixydevelopment.pxCalendar.PxCalendarPlugin;
+import com.pixydevelopment.pxCalendar.calendar.RewardBundle;
+import com.pixydevelopment.pxCalendar.calendar.RewardFile;
 import com.pixydevelopment.pxCalendar.core.utils.ChatUtil;
 import com.pixydevelopment.pxCalendar.editor.sessions.CalendarCreateSession;
+import com.pixydevelopment.pxCalendar.editor.sessions.RewardAddCommandSession;
 import com.pixydevelopment.pxCalendar.editor.sessions.RewardFileCreateSession;
 import org.bukkit.entity.Player;
 
@@ -84,6 +87,25 @@ public class EditorSessionManager {
 
         chatSessions.put(player.getUniqueId(), (input) -> {
             new RewardFileCreateSession(plugin, player, input).process();
+        });
+    }
+
+    /**
+     * Puts a player into a session to add a command to a bundle.
+     * @param player The admin
+     * @param rewardFile The file being edited
+     * @param bundle The bundle being edited
+     */
+    public void startRewardAddCommandSession(Player player, RewardFile rewardFile, RewardBundle bundle) {
+        player.closeInventory();
+
+        // Send the prompt (from lang.yml)
+        for (String line : plugin.getLangManager().getLangConfig().getStringList("editor.prompt-reward-command")) {
+            player.sendMessage(ChatUtil.format(line.replace("%plugin-prefix%", plugin.getLangManager().getMessage("plugin-prefix"))));
+        }
+
+        chatSessions.put(player.getUniqueId(), (input) -> {
+            new RewardAddCommandSession(plugin, player, input, rewardFile, bundle).process();
         });
     }
 

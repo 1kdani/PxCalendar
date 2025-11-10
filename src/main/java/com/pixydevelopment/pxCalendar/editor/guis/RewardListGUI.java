@@ -103,9 +103,8 @@ public class RewardListGUI extends BaseEditorGUI {
                 return;
             }
 
-            // TODO: Open the final RewardEditGUI (Step 6.4)
-            lang.sendMessage(player, "&cOpening the Reward Editor (Commands/Items) is coming next!");
-            player.closeInventory();
+            // JAVÍTVA: Megnyitja a RewardEditGUI-t
+            new RewardEditGUI(plugin, player, rewardFile, bundle).open();
         }
     }
 }
