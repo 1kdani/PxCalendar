@@ -241,3 +241,44 @@ editor:
       name: "&c&lSʟᴏᴛ Töʀʟésᴇ"
       lore:
         - "&7Eltávolítja a tárgyat a GUI-ból."
+  title-list-reward-files: "&8Szerkesztő &7» Jutalom Fájlok"
+  title-list-rewards: "&8Szerkesztő &7» Jutalmak (%file%)"
+
+  reward-file-list:
+    create-new:
+      name: "&a&lÚᴊ Jᴜᴛᴀʟᴏᴍ Fáᴊʟ"
+      lore:
+        - "&7Kᴀᴛᴛɪɴᴛs ᴇɢʏ úᴊ"
+        - "&7ʀᴇᴡᴀʀᴅs_...ʏᴍʟ ꜰáᴊʟ ʟéᴛʀᴇʜᴏᴢásáʜᴏᴢ."
+    reward-file-item:
+      name: "&b&l%file_name%"
+      lore:
+        - "&f%count% &7ᴅᴀʀᴀʙ ᴊᴜᴛᴀʟᴏᴍ ᴄsᴏᴍᴀɢ."
+        - " "
+        - "&a» Kᴀᴛᴛɪɴᴛs ᴀ Csoᴍᴀɢᴏᴋ Sᴢᴇʀᴋᴇsᴢᴛéséʜᴇᴢ"
+        - "&c» Sʜɪꜰᴛ-Jᴏʙʙ-Kᴀᴛᴛɪɴᴛs ᴀ Töʀʟésʜᴇᴢ"
+
+  reward-list:
+    create-new:
+      name: "&a&lÚᴊ Jᴜᴛᴀʟᴏᴍ Csᴏᴍᴀɢ"
+      lore:
+        - "&7Kᴀᴛᴛɪɴᴛs ᴇɢʏ úᴊ ᴄsᴏᴍᴀɢ ʟéᴛʀᴇʜᴏᴢásáʜᴏᴢ"
+        - "&7(ᴘʟ. 'ᴅᴀʏ-25') ᴇʙʙᴇɴ ᴀ ꜰáᴊʟʙᴀɴ."
+    reward-bundle-item:
+      name: "&b&l%bundle_id%"
+      lore:
+        - "&7Pᴀʀᴀɴᴄsᴏᴋ: &f%commands%"
+        - "&7Táʀɢʏᴀᴋ: &f%items%"
+        - " "
+        - "&a» Kᴀᴛᴛɪɴᴛs ᴀ Sᴢᴇʀᴋᴇsᴢᴛésʜᴇᴢ"
+        - "&c» Sʜɪꜰᴛ-Jᴏʙʙ-Kᴀᴛᴛɪɴᴛs ᴀ Töʀʟésʜᴇᴢ"
+
+  # Chat prompts for rewards
+  prompt-reward-file-name:
+    - " "
+    - "%plugin-prefix%&eÍrd be az új jutalom fájl azonosítóját."
+    - "&7(pl. 'vip_rewards'. A '_rewards' végződés ajánlott)."
+    - "&7Írd be: 'cancel' a megszakításhoz."
+    - " "
+  prompt-reward-file-exists: "%plugin-prefix%&cMár létezik jutalom fájl '&e%id%&c' azonosítóval."
+  prompt-reward-file-created: "%plugin-prefix%&aSikeresen létrehoztad a(z) '&e%id%&a' jutalom fájlt."

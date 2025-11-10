@@ -59,13 +59,11 @@ public class MainEditorGUI extends BaseEditorGUI {
 
         switch (slot) {
             case 11: // Calendar List
-                // JAVÍTVA: Megnyitja az új naptárlista GUI-t
                 new CalendarListGUI(plugin, player).open();
                 break;
             case 13: // Reward Editor
-                // TODO: new RewardListGUI(plugin, player).open();
-                player.sendMessage(ChatUtil.format("&cReward Editor is coming soon!"));
-                player.closeInventory();
+                // JAVÍTVA: Megnyitja a Jutalom FÁJL Listát
+                new RewardFileListGUI(plugin, player).open();
                 break;
             case 15: // General Settings
                 new ConfigEditorGUI(plugin, player).open();

@@ -7,6 +7,7 @@ package com.pixydevelopment.pxCalendar.editor.guis;
 
 import com.pixydevelopment.pxCalendar.PxCalendarPlugin;
 import com.pixydevelopment.pxCalendar.calendar.Calendar;
+import com.pixydevelopment.pxCalendar.calendar.RewardFile;
 import com.pixydevelopment.pxCalendar.core.utils.ChatUtil;
 import com.pixydevelopment.pxCalendar.core.utils.ItemBuilder;
 import org.bukkit.Material;
@@ -70,13 +71,19 @@ public class CalendarEditGUI extends BaseEditorGUI {
 
         switch (slot) {
             case 11: // Edit Layout
-                // JAVÍTVA: Megnyitja a vizuális szerkesztőt
                 new CalendarSlotEditorGUI(plugin, player, calendar).open();
                 break;
             case 13: // Edit Rewards
-                // TODO: Open the reward bundle assignment editor
-                player.sendMessage(ChatUtil.format("&cThe Reward Assignment Editor is coming soon!"));
-                player.closeInventory();
+                // JAVÍTVA: Megnyitja a megfelelő jutalom listát
+                String rewardFileId = calendar.getId() + "_rewards";
+                RewardFile rewardFile = plugin.getRewardManager().getRewardFile(rewardFileId);
+
+                if (rewardFile == null) {
+                    lang.sendMessage(player, "&cCould not find matching reward file: " + rewardFileId + ".yml");
+                    player.closeInventory();
+                } else {
+                    new RewardListGUI(plugin, player, rewardFile).open();
+                }
                 break;
             case 15: // Delete
                 // TODO: Add a confirmation GUI

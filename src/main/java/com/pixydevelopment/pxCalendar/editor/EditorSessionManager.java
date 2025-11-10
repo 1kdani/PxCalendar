@@ -8,6 +8,7 @@ package com.pixydevelopment.pxCalendar.editor;
 import com.pixydevelopment.pxCalendar.PxCalendarPlugin;
 import com.pixydevelopment.pxCalendar.core.utils.ChatUtil;
 import com.pixydevelopment.pxCalendar.editor.sessions.CalendarCreateSession;
+import com.pixydevelopment.pxCalendar.editor.sessions.RewardFileCreateSession;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
@@ -70,6 +71,19 @@ public class EditorSessionManager {
             // This code runs when the player chats
             CalendarCreateSession session = new CalendarCreateSession(plugin, player, input);
             session.process();
+        });
+    }
+
+    public void startRewardFileCreateSession(Player player) {
+        player.closeInventory();
+
+        // Send the prompt (from lang.yml)
+        for (String line : plugin.getLangManager().getLangConfig().getStringList("editor.prompt-reward-file-name")) {
+            player.sendMessage(ChatUtil.format(line.replace("%plugin-prefix%", plugin.getLangManager().getMessage("plugin-prefix"))));
+        }
+
+        chatSessions.put(player.getUniqueId(), (input) -> {
+            new RewardFileCreateSession(plugin, player, input).process();
         });
     }
 

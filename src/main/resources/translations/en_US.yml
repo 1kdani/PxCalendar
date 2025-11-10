@@ -240,3 +240,44 @@ editor:
       name: "&c&lCʟᴇᴀʀ Sʟᴏᴛ"
       lore:
         - "&7Removes this item from the GUI."
+  title-list-reward-files: "&8Editor &7» Reward Files"
+  title-list-rewards: "&8Editor &7» Rewards (%file%)"
+
+  reward-file-list:
+    create-new:
+      name: "&a&lCʀᴇᴀᴛᴇ Nᴇᴡ Rᴇᴡᴀʀᴅ Fɪʟᴇ"
+      lore:
+        - "&7Cʟɪᴄᴋ ᴛᴏ ᴄʀᴇᴀᴛᴇ ᴀ ɴᴇᴡ"
+        - "&7ʀᴇᴡᴀʀᴅs_...ʏᴍʟ ꜰɪʟᴇ."
+    reward-file-item:
+      name: "&b&l%file_name%"
+      lore:
+        - "&7Cᴏɴᴛᴀɪɴs &f%count% &7ʀᴇᴡᴀʀᴅ ʙᴜɴᴅʟᴇs."
+        - " "
+        - "&a» Cʟɪᴄᴋ ᴛᴏ Eᴅɪᴛ Bᴜɴᴅʟᴇs"
+        - "&c» Sʜɪꜰᴛ-Rɪɢʜᴛ-Cʟɪᴄᴋ ᴛᴏ Dᴇʟᴇᴛᴇ"
+
+  reward-list:
+    create-new:
+      name: "&a&lCʀᴇᴀᴛᴇ Nᴇᴡ Rᴇᴡᴀʀᴅ Bᴜɴᴅʟᴇ"
+      lore:
+        - "&7Cʟɪᴄᴋ ᴛᴏ ᴄʀᴇᴀᴛᴇ ᴀ ɴᴇᴡ ʙᴜɴᴅʟᴇ"
+        - "&7(ᴇ.ɢ., 'ᴅᴀʏ-25') ɪɴ ᴛʜɪs ꜰɪʟᴇ."
+    reward-bundle-item:
+      name: "&b&l%bundle_id%"
+      lore:
+        - "&7Cᴏᴍᴍᴀɴᴅs: &f%commands%"
+        - "&7Iᴛᴇᴍs: &f%items%"
+        - " "
+        - "&a» Cʟɪᴄᴋ ᴛᴏ Eᴅɪᴛ"
+        - "&c» Sʜɪꜰᴛ-Rɪɢʜᴛ-Cʟɪᴄᴋ ᴛᴏ Dᴇʟᴇᴛᴇ"
+
+  # Chat prompts for rewards
+  prompt-reward-file-name:
+    - " "
+    - "%plugin-prefix%&ePlease type the new reward file ID."
+    - "&7(e.g., 'vip_rewards'. '_rewards' is recommended)."
+    - "&7Type 'cancel' to exit."
+    - " "
+  prompt-reward-file-exists: "%plugin-prefix%&cA reward file with ID '&e%id%&c' already exists."
+  prompt-reward-file-created: "%plugin-prefix%&aSuccessfully created reward file '&e%id%&a'."
